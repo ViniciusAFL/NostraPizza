@@ -17,10 +17,15 @@
             </tr>
         </thead>
         <tbody>
+            <a class="btn btn-success mb-2" href="{{route('produto.create')}}">NOVO PRODUTO</a>
             @foreach ($produtos as $produto)
 
             <tr>
+
                 <td>
+
+
+
                     <a href="{{ route('produto.edit',['id'=>$produto->id_produto])}}">
                         <i class="bi bi-pencil-square"></i>
                     </a>

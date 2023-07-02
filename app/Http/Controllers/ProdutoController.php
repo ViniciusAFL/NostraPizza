@@ -26,7 +26,7 @@ class ProdutoController extends Controller
     public function create()
     {
         $produto = null;
-        return view('produto.form')->with(compact('produto'));
+        return view('produto.novo')->with(compact('produto'));
     }
 
     /**
@@ -34,9 +34,14 @@ class ProdutoController extends Controller
      */
     public function store(StoreProdutoRequest $request)
     {
-        $produto = Produto::created($request->all());
-        return redirect()->route('produto.index')
-        ->with('success','Cadastrado com sucesso!');
+        $validated = $request->validate([
+            'nome' => 'required',
+            'descricao' => 'required'
+        ]);
+
+        $produto = Produto::create($request->all());
+        return redirect()
+        ->route('produto.show',['id'=>$produto->id_produto]);
     }
 
     /**

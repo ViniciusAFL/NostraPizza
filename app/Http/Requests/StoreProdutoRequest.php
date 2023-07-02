@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Produto;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProdutoRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreProdutoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,10 @@ class StoreProdutoRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+         return [
+            'nome' => ['string', 'max:191'],
+             'descricao' => ['string', 'max:255'],
+             'id_tipo_produto' => ['1'],
+         ];
     }
 }
