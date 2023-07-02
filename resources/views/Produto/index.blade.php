@@ -28,9 +28,15 @@
                     <a href="{{ route('produto.show', ['id'=>$produto->id_produto]) }}">
                         <i class="bi bi-eye"></i>
                     </a>
-                    <a href="{{ route('produto.destroy', ['id'=>$produto->id_produto]) }}">
-                        <i class="bi bi-trash"></i>
-                    </a>
+
+                    <form action="{{ route('produto.destroy', ['id'=>$produto->id_produto]) }}" method="post">
+                        @csrf
+                        @method('delete')
+
+                        <button type="submit" class="btn btn-danger">EXCLOI</button>
+
+                    </form>
+
                 </td>
                 <td>
                     {{$produto->id_produto}}

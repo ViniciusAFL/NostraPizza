@@ -63,9 +63,9 @@ class ProdutoController extends Controller
     {
         $produto = Produto::find($id);
         $produto->update($request->all());
-          return redirect()
+           return redirect()
          ->route('produto.index', ['id'=> $produto->id_produto])
-          ->with('success','Atualizado com sucesso!');
+           ->with('success','Atualizado com sucesso!');
 
 
     }
@@ -75,8 +75,8 @@ class ProdutoController extends Controller
     public function destroy(int $id)
     {
         Produto::find($id)->delete();
-        return redirect()
-            ->back()
-            ->with('destroy', 'Excluído com sucesso!');
+         return redirect()
+             ->back()
+             ->with('destroy', 'Excluído com sucesso!');
     }
 }
