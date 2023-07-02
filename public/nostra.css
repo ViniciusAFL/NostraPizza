@@ -1,0 +1,88 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-image: url("/imagem/hello.png");
+    background-size: cover;
+    
+}
+
+.container{
+    margin-top: 150px;
+}
+
+#nome-do-menu{
+    color: #ffcdbc;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.icons-redes{
+    color: #ffcdbc;
+    margin-top: -30px;
+}
+
+.icons-redes:hover{
+    color: #c59d8f;
+}
+
+#img-logo
+{
+    margin-top: 50px;
+}
+
+#frase{
+    margin-top: 30px;
+    font-family: 'Pacifico', cursive;
+    color: white;
+}
+
+#color-menu{
+    background-color: #130303;
+    margin-top: -90px;
+}
+
+.nome-pizzaria{
+    font-family: 'Ultra', serif;
+    
+}
+
+.ifood-logo{
+    margin-top: -70px;
+}
+
+#background-nav{
+    background-color: #2d080a;
+}
+
+#btn-color{
+   background-color: #2d080a;
+    
+    
+}
+#btn-color:hover{
+    background-color: #4d0d11;
+}
+
+.btn-color{
+    background-color: #2d080a;
+    
+    
+}
+.btn-color:hover{
+    background-color: #f5853f;
+}
+
+.nav-link{
+    color: #ffcdbc;
+}
+
+.nav-link:hover{
+    color: #ffcdbc;
+}
+
+.background-nav{
+    background-color: #2d080a;
+ }
+
