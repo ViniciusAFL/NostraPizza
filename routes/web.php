@@ -10,6 +10,7 @@ use App\Http\Controllers\{
     ProdutoController,
     ProdutoTamanhoController,
     ProfileController,
+    ProdutoCliController
 };
 use Database\Factories\EnderecoFactory;
 
@@ -159,5 +160,24 @@ Route::middleware('auth')->group(function () {
         Route::post('/update', 'update')->name('tamanho.update');
         Route::post('/destroy', 'destroy')->name('tamanho.destroy');
     });
+
+
+
+
+
+
+
+/**
+ * -----------------------------------
+ * | Produto Cliente
+ * -----------------------------------
+ */
+    Route::prefix('ProdutoCliente')
+    ->controller(ProdutoCliController::class)
+    ->group(function () {
+    Route::get('/','index')->name('ProdutoCliente.index');
+    Route::get('/{id}','show')->name('ProdutoCliente.show');
+            });
+
 
 require __DIR__.'/auth.php';
