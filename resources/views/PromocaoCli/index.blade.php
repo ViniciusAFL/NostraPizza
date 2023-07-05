@@ -17,7 +17,7 @@
               <p class="card-text">R${{$promocao->preco}}</p>
               <p class="card-text"> {{$promocao->observacoes}}</p>
             </div>
-            <a class="btn btn-success mb-2" href="{{ route('PromocaoCli.show', ['id'=>$promocao->id_produto]) }}">Ver</a>
+            <a class="btn btn-success mb-2" href="{{ route('PromocaoCli.show', ['id'=>$promocao->id_produto_tamanho]) }}">Ver</a>
             <a class="btn btn-success mb-2" href="#">Comprar</a>
           </div>
         </div><br>

@@ -5,10 +5,10 @@
 {{-- <h2>Fique a vontade {{$user->nome}}</h2> --}}
 <div class="container">
 
-                <h2>{{$promocao->nome}}</h2>
-                <h2>{{$promocao->preco_promo}}</h2>
-                <p>{{$promocao->descricao}}</p>
-                <img src="{{$promocao->foto}}" alt="">
+                <h2>{{$promocao->id_produto_tamanho}}</h2>
+                <h2>{{$promocao->preco_promocao}}</h2>
+                <p>{{$promocao->observacoes}}</p>
+                {{-- <img src="{{$promocao->foto}}" alt=""> --}}
             </div>
 @endsection
 @section('scripts')
