@@ -23,6 +23,7 @@ class ProdutoTamanho extends Model
         'id_tamanho',
         'observacoes',
         'preco',
+        'preco_promocao',
 
 
     ];

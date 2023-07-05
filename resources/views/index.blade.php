@@ -72,18 +72,18 @@
           <form class="container-fluid justify-content-center">
 
             <button class="btn me-2" id="btn-color" type="button">
-              <a class="nav-link" href="index.php"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+              <a class="nav-link" href=""> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                   <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
                 </svg> Home</a>
             </button>
             <button class="btn me-2" id="btn-color" type="button">
-              <a class="nav-link" href="promocao.php">Promoção</a>
+              <a class="nav-link" href="{{route('PromocaoCli.index')}}">Promoção</a>
             </button>
             <button class="btn me-2 " id="btn-color" type="button">
-              <a class="nav-link" href="cardapio.php">Cardápio</a>
+              <a class="nav-link" href="{{route('ProdutoCliente.index')}}">Cardápio</a>
             </button>
             <button class="btn me-2 " id="btn-color" type="button">
-              <a class="nav-link" href="bebidas.php">Bebidas</a>
+              <a class="nav-link" href="#">Bebidas</a>
             </button>
           </form>
         </nav>
@@ -91,9 +91,9 @@
     </div>
     <!-- ROW DA NAV -->
 
-   
 
-      
+
+
         <div id="carouselExample" class="carousel slide bg-light" >
           <div class="carousel-inner" style="height: 300px;">
             <div class="carousel-item active">
@@ -115,8 +115,8 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-      
-   
+
+
 
   </div>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     ClienteController,
     EnderecoController,
     PedidoController,
+    PrecoPromocao,
     ProdutoController,
     ProdutoTamanhoController,
     ProfileController,
@@ -163,10 +164,6 @@ Route::middleware('auth')->group(function () {
 
 
 
-
-
-
-
 /**
  * -----------------------------------
  * | Produto Cliente
@@ -178,6 +175,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/','index')->name('ProdutoCliente.index');
     Route::get('/{id}','show')->name('ProdutoCliente.show');
             });
+
+
+/**
+ * -----------------------------------
+ * | Promoções
+ * -----------------------------------
+ */
+Route::prefix('Promocao')
+    ->controller(PrecoPromocao::class)
+    ->group(function () {
+    Route::get('/','index')->name('PromocaoCli.index');
+    Route::get('/{id}','show')->name('PromocaoCli.show');
+            });
+
+
 
 
 require __DIR__.'/auth.php';
