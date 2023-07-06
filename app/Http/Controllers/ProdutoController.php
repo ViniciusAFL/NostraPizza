@@ -15,7 +15,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {                               //nome de acordo com os campos do banco de dados
-        $produtos = Produto::orderBy('nome')->get();
+        $produtos = Produto::orderBy('id_produto')->get();
         return view('produto.index')
         ->with(compact('produtos'));
     }

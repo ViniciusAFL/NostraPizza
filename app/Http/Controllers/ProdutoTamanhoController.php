@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\ProdutoTamanho;
 use Illuminate\Http\Request;
+use App\Models\ProdutoTamanho;
+
 
 class ProdutoTamanhoController extends Controller
 {
@@ -12,7 +12,9 @@ class ProdutoTamanhoController extends Controller
      */
     public function index()
     {
-        //
+        $tamanhos = ProdutoTamanho::orderBy('id_produto_tamanho')->get();
+        return view('tamanhos.index')
+        ->with(compact('tamanhos'));
     }
 
     /**
@@ -20,7 +22,8 @@ class ProdutoTamanhoController extends Controller
      */
     public function create()
     {
-        //
+        $tamanhos = null;
+        return view('tamanhos.form')->with(compact('tamanhos'));
     }
 
     /**
@@ -28,7 +31,16 @@ class ProdutoTamanhoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'id_produto' => 'required',
+            'id_tamanho' => 'required',
+            'preco' => 'required',
+            'preco_promocao' => 'required',
+        ]);
+
+        $tamanhos = ProdutoTamanho::create($request->all());
+        return redirect()
+        ->route('tamanho.index',['id'=>$tamanhos->id_produto_tamanhos]);
     }
 
     /**
@@ -58,8 +70,11 @@ class ProdutoTamanhoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProdutoTamanho $produtoTamanho)
+    public function destroy(int $id)
     {
-        //
+        ProdutoTamanho::find($id)->delete();
+         return redirect()
+             ->back()
+             ->with('destroy', 'Excluído com sucesso!');
     }
 }

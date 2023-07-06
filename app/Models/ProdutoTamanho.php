@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\MassAssignmentException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 use App\Models\{
     Produto,
     tamanho
@@ -18,14 +20,12 @@ class ProdutoTamanho extends Model
     protected $primaryKey = 'id_produto_tamanho';
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    protected $fillabe = [
+    protected $fillable = [
         'id_produto',
         'id_tamanho',
         'observacoes',
         'preco',
         'preco_promocao',
-
-
     ];
 
     /* -------------------------------------------------------------------

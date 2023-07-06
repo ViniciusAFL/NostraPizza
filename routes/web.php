@@ -159,7 +159,7 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/store', 'store')->name('tamanho.store');
         Route::post('/update', 'update')->name('tamanho.update');
-        Route::post('/destroy', 'destroy')->name('tamanho.destroy');
+        Route::delete('tamanho/destroy/{id}', 'destroy')->name('tamanho.destroy');
     });
 
 
@@ -188,6 +188,7 @@ Route::prefix('Promocao')
     Route::get('/','index')->name('PromocaoCli.index');
     Route::get('/{id}','show')->name('PromocaoCli.show');
             });
+
 
 
 
