@@ -158,7 +158,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/editar/{id}','edit')->name('tamanho.edit');
 
         Route::post('/store', 'store')->name('tamanho.store');
-        Route::post('/update', 'update')->name('tamanho.update');
+        Route::post('/update/{id}', 'update')->name('tamanho.update');
         Route::delete('tamanho/destroy/{id}', 'destroy')->name('tamanho.destroy');
     });
 

@@ -8,7 +8,7 @@
 
 @foreach ($tamanhos as $tamanho )
 
-<table class="table table-borderless">
+<table class="table">
     <thead>
       <tr>
         <th scope="col">Ações</th>
@@ -28,7 +28,7 @@
             <button type="submit" class="btn btn-danger">Excluir</button>
 
             </form>
-            <a class="btn btn-warning" href="">Atualizar</a>
+            <a class="btn btn-warning" href="{{ route('tamanho.edit', ['id'=>$tamanho->id_produto_tamanho]) }}">Atualizar</a>
         </td>
 
         <td>

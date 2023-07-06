@@ -54,17 +54,22 @@ class ProdutoTamanhoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProdutoTamanho $produtoTamanho)
+    public function edit(int $id)
     {
-        //
+        $tamanhos = ProdutoTamanho::find($id);
+        return view('tamanhos.update')->with(compact('tamanhos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProdutoTamanho $produtoTamanho)
+    public function update(Request $request, int $id)
     {
-        //
+        $tamanhos = ProdutoTamanho::find($id);
+        $tamanhos->update($request->all());
+           return redirect()
+         ->route('tamanho.index', ['id'=> $tamanhos->id_produto_tamanho])
+           ->with('success','Atualizado com sucesso!');
     }
 
     /**
