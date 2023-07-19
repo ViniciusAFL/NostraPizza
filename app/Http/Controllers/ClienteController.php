@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Cliente, ClienteEndereco, Endereco};
+use App\Models\{Cliente, ClienteEndereco, Endereco, User};
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\EnderecoController;
-
-
+use Illuminate\Auth\Events\Validated;
 
 class ClienteController extends Controller
 {
@@ -16,9 +15,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $cliente = Cliente::where('id_cliente')->get();
-        return view('Cliente.index')
-         ->with(compact('cliente'));
+
+        $clientes = Cliente::all();
+        return view('Cliente.index', ['clientes' => $clientes])->with(compact('clientes'));
     }
 
     /**
@@ -35,36 +34,11 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-
-        //  $validaded = $request->validate([
-        //      'nome' => 'required',
-        //      'celular' => 'required',
-        //      'email' => 'required'
-        //  ]);
-
-        //  $cliente = Cliente::create($request->all());
-        //  $endereco = Endereco::create($request->all());
-
-        //   dd($request);
-
-        //  $cliente->endereco()->attach($endereco->id);
-        //  $cliente->cliente()->attach($cliente->id);
-
-        //    $cliente->roles()->attach([
-        //        1 => ['id_cliente' => $cliente],
-        //        2 => ['id_endereco' => $endereco],
-        //    ]);
-
-        //  $cliente->endereco()->attach('id_endereco');
-        //    $cliente->cliente()->attach('id_cliente');
-
-
          $dadosCliente = $request->only([
-             'nome',
-            'ddd',
-             'celular',
-             'email',
-             // ... outros campos do cliente
+                'nome',
+                'ddd',
+                'celular',
+                'email',
          ]);
 
          $dadosEndereco = $request->only([
@@ -75,7 +49,6 @@ class ClienteController extends Controller
              'cidade',
              'uf',
              'cep'
-              //... outros campos do endereço
              ]);
 
          $cliente = Cliente::create($dadosCliente);
@@ -83,21 +56,10 @@ class ClienteController extends Controller
          $endereco = new Endereco($dadosEndereco);
          $endereco->save();
 
-        //  $cliente->id_cliente;
-        //  $endereco->id_endereco;
-        //  $cliente = new ClienteEndereco();
-        //  $cliente->endereco()->attach($endereco->id);
-        //  $cliente->cliente()->attach($cliente->id);
-        // $endereco = DB::insert($endereco, 'id_endereco')->get();
         $cliente = DB::insert('insert into clientes_enderecos (id_cliente, id_endereco, created_at, updated_at) values(?, ?, now(), now())',
         [$cliente->id_cliente, $endereco->id_endereco]);
 
         return redirect()->route('cliente.index')->with('success', 'DEU BOM MLK DOIDO');
-
-
-
-
-
 
     }
 
@@ -121,7 +83,7 @@ class ClienteController extends Controller
     public function edit(int $id)
     {
         $cliente = Cliente::find($id);
-        return view ('cliente.form')->with(compact('cliente'));
+        return view ('cliente.update')->with(compact('cliente'));
     }
 
     /**

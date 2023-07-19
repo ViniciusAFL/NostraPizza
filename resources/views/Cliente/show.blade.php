@@ -5,6 +5,30 @@
 
 <h1>Olá {{$cliente->nome}}</h1>
 
+@if ($cliente->email == $user->email)
+
+   Olá {{$user->nome}}
+
+   seu cadastro já existe
+
+   <div class="row">
+    <h2>Informações cadastradas:</h2>
+<div>
+    {{$cliente->celular}}
+</div>
+<div>
+    {{$cliente->ddd}}
+
+</div>
+<div>
+    {{$cliente->email}}
+</div>
+</div>
+
+
+
+@endif
+
 <div class="row">
         <h2>Informações cadastradas:</h2>
     <div>

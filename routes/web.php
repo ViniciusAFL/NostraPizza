@@ -11,7 +11,9 @@ use App\Http\Controllers\{
     ProdutoController,
     ProdutoTamanhoController,
     ProfileController,
-    ProdutoCliController
+    ProdutoCliController,
+    SistemaLogin,
+    IndexSite
 };
 use Database\Factories\EnderecoFactory;
 
@@ -25,17 +27,20 @@ use Database\Factories\EnderecoFactory;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/')
+->controller(IndexSite::class)->group(function () {
+    Route::get('/', 'index')->name('index');
 });
 
-Route::get('/', function () {
-    return view('index');
-});
+
+Route::prefix('index')
+    ->controller(IndexSite::class)
+    ->group(function () {
+    Route::get('/', 'index')->name('index');
+            });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -49,8 +54,7 @@ Route::middleware('auth')->group(function () {
  * | Cargos
  * -----------------------------------
  */
-
- Route::prefix('cargos')
+    Route::prefix('cargos')
     ->controller(CargoController::class)
     ->group(function () {
         Route::get('/','index')->name('cargo.index');
@@ -69,9 +73,8 @@ Route::middleware('auth')->group(function () {
  * | Cliente
  * -----------------------------------
  */
-
     Route::prefix('clientes')
-        ->controller(ClienteController::class)
+    ->controller(ClienteController::class)
         ->group(function () {
             Route::get('/','index')->name('cliente.index');
             Route::get('/novo','create')->name('cliente.create');
@@ -88,8 +91,7 @@ Route::middleware('auth')->group(function () {
  * | Endereco
  * -----------------------------------
  */
-
- Route::prefix('enderecos')
+    Route::prefix('enderecos')
     ->controller(EnderecoController::class)
     ->group(function () {
         Route::get('/','index')->name('endereco.index');
@@ -107,8 +109,7 @@ Route::middleware('auth')->group(function () {
  * | Pedidos
  * -----------------------------------
  */
-
- Route::prefix('pedidos')
+    Route::prefix('pedidos')
     ->controller(PedidoController::class)
     ->group(function () {
         Route::get('/','index')->name('pedido.index');
@@ -126,8 +127,7 @@ Route::middleware('auth')->group(function () {
  * | Produto
  * -----------------------------------
  */
-
- Route::prefix('produtos')
+    Route::prefix('produtos')
     ->controller(ProdutoController::class)
     ->group(function () {
         Route::get('/','index')->name('produto.index');
@@ -135,12 +135,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}','show')->name('produto.show');
         Route::get('/editar/{id}','edit')->name('produto.edit');
 
-        Route::post('/store', 'store')->name('produto.store');
-        Route::post('/update/{id}', 'update')->name('produto.update');
-        Route::delete('/produto/destroy/{id}', 'destroy')->name('produto.destroy');
-        // Route::post('/destroy/{id}', 'destroy')->name('produto.destroy');
+        Route::get('/tamanho/{id_produto}', 'createTamanho')->name('produto.createTamanho');
+        Route::get('/tamanho/editar/{id}', 'editTamanho')->name('produto.editTamanho');
 
+        Route::post('/store', 'store')->name('produto.store');
+        Route::post('/update', 'update')->name('produto.update');
+        Route::post('/destroy', 'destroy')->name('produto.destroy');
+
+        Route::post('/tamanho/store/{id_produto}', 'storeTamanho')->name('produto.storeTamanho');
+        Route::post('/tamanho/update/{id}', 'updateTamanho')->name('produto.updateTamanho');
+        Route::post('/tamanho/destroy/', 'destroyTamanho')->name('produto.destroyTamanho');
     });
+
 
 
 /**
@@ -148,8 +154,7 @@ Route::middleware('auth')->group(function () {
  * | Tamanhos
  * -----------------------------------
  */
-
- Route::prefix('tamanhos')
+    Route::prefix('tamanhos')
     ->controller(ProdutoTamanhoController::class)
     ->group(function () {
         Route::get('/','index')->name('tamanho.index');
@@ -182,12 +187,13 @@ Route::middleware('auth')->group(function () {
  * | Promoções
  * -----------------------------------
  */
-Route::prefix('Promocao')
+    Route::prefix('Promocao')
     ->controller(PrecoPromocao::class)
     ->group(function () {
     Route::get('/','index')->name('PromocaoCli.index');
     Route::get('/{id}','show')->name('PromocaoCli.show');
             });
+
 
 
 

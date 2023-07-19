@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\{
-    TipoProduto
+    TipoProduto,
+    ProdutoTamanho
 };
 
 class Produto extends Model
@@ -23,7 +24,8 @@ class Produto extends Model
         'nome',
         'descricao',
         'foto',
-        'observacoes',
+        'observacoes'
+
     ];
 
     /* -------------------------------------------------------------------
@@ -37,4 +39,11 @@ class Produto extends Model
                                 'id_tipo_produto');
     }
 
+    public function tamanhos(): object
+    {
+        return $this->belongsTo(ProdutoTamanho::class,
+        'id_produto',
+        'id_produto');
+
+    }
 }
