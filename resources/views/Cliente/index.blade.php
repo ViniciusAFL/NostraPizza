@@ -7,7 +7,7 @@
 <h1>TESTE</h1>
 
 
-<p> olá faça o seu cadastro {{auth()->user()->nome}}</p>
+<p> olá {{auth()->user()->nome}}</p>
 <p> {{ (auth()->user()->email) }}</p>
 
 {{-- <p>{{$cliente->nome}}</p> --}}

@@ -12,8 +12,8 @@ use App\Http\Controllers\{
     ProdutoTamanhoController,
     ProfileController,
     ProdutoCliController,
-    SistemaLogin,
-    IndexSite
+    IndexSite,
+    ContatoController
 };
 use Database\Factories\EnderecoFactory;
 
@@ -194,7 +194,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/{id}','show')->name('PromocaoCli.show');
             });
 
-
+// CONTATO
+Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
+Route::post('contato-enviar', [ContatoController::class, 'send'])->name('contato.send');
 
 
 

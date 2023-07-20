@@ -100,7 +100,7 @@
                                 <a class="nav-link" href="bebidas.php">Bebidas</a>
                             </button>
                             <button class="btn me-2" id="btn-color" type="button">
-                                <a class="nav-link" href="promocao.php">Fale Conosco</a>
+                                <a class="nav-link" href="{{ route('contato') }}">Fale Conosco</a>
                             </button>
 
                             <div class="col-xs-1 me-1 position-absolute top-50 end-0 translate-middle-y d-md- d-lg-block">
