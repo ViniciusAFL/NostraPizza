@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Cliente, ClienteEndereco, Endereco, User};
+use App\Models\{Cliente, ClienteEndereco, Endereco};
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EnderecoController;
 use Illuminate\Auth\Events\Validated;
 
@@ -17,7 +18,9 @@ class ClienteController extends Controller
     {
 
         $clientes = Cliente::all();
-        return view('Cliente.index', ['clientes' => $clientes])->with(compact('clientes'));
+        $clientesEndereco = ClienteEndereco::all();
+        $endereco = Endereco::all();
+        return view('Cliente.index') ->with(compact('clientes', 'endereco', 'clientesEndereco'));
     }
 
     /**
@@ -59,12 +62,9 @@ class ClienteController extends Controller
         $cliente = DB::insert('insert into clientes_enderecos (id_cliente, id_endereco, created_at, updated_at) values(?, ?, now(), now())',
         [$cliente->id_cliente, $endereco->id_endereco]);
 
-        return redirect()->route('cliente.index')->with('success', 'DEU BOM MLK DOIDO');
+        return redirect()->route('cliente.index')->with('success');
 
     }
-
-
-
 
     /**
      * Display the specified resource.
@@ -72,8 +72,20 @@ class ClienteController extends Controller
     public function show(int $id)
     {
         $cliente = Cliente::find($id);
-        return view('cliente.show')->with(compact('cliente'));
 
+        $emailAutenticado = Auth::user()->email;
+        $cliente = Cliente::where('email', $emailAutenticado)->first();
+        $clientesEndereco = ClienteEndereco::class;
+        $endereco = Endereco::class;
+
+        if ($cliente) {
+            return view('cliente.show')->with('cliente', $cliente);
+        } else {
+
+            return redirect()->route('cliente.index')->with('error', 'Cliente não encontrado.');
+        }
+
+        return view('cliente.show')->with(compact(['cliente' => $cliente, 'clientesEndereco' => $clientesEndereco, 'endereco' => $endereco]));
 
     }
 
@@ -93,8 +105,9 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
         $cliente->update($request->all());
-            return redirect()->route('cliente.index', ['id'=>$cliente->id_cliente])
-            ->with('success', 'Atualizado com Sucesso!');
+
+         return redirect()->route('cliente.show', ['id'=>$cliente->id_cliente])
+         ->with('success', 'Atualizado com sucesso');
     }
 
     /**
@@ -103,8 +116,7 @@ class ClienteController extends Controller
     public function destroy(int $id)
     {
         Cliente::find($id)->delete();
-        return redirect()
-        ->back()
-        ->with('destroy', 'Excluido Com Sucesso!');
+        return redirect()->back()->with('danger', 'Removido Com sucesso!');
+
     }
 }

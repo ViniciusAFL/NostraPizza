@@ -8,7 +8,7 @@
 }
 
 body{
-    background-image: url("/imagem/hello.png");
+    background-image: url("/imagem/imgfundo.png");
     background-size: cover;
     font-family: 'Poppins', sans-serif;
 
@@ -223,6 +223,10 @@ body{
 
   #myBtn:hover {
     background-color: #4d0d11;
+  }
+
+  .corfont{
+    color: #fff ;
   }
 
 @media screen and (max-width: 700px ) and (max-width: 900px)  {

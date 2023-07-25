@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\{
     CargoController,
     ClienteController,
@@ -13,9 +14,12 @@ use App\Http\Controllers\{
     ProfileController,
     ProdutoCliController,
     IndexSite,
-    ContatoController
+    ContatoController,
+    User,
 };
 use Database\Factories\EnderecoFactory;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,14 +80,20 @@ Route::middleware('auth')->group(function () {
     Route::prefix('clientes')
     ->controller(ClienteController::class)
         ->group(function () {
-            Route::get('/','index')->name('cliente.index');
+
+            if (Gate::allows('subs-only', Auth::user())) {
+                return view('subs');
+          }
+
+            Route::get('/','index')->name('cliente.index')->middleware('auth');
+
             Route::get('/novo','create')->name('cliente.create');
             Route::get('/{id}','show')->name('cliente.show');
             Route::get('/editar/{id}','edit')->name('cliente.edit');
 
             Route::post('/store', 'store')->name('cliente.store');
-            Route::post('/update', 'update')->name('cliente.update');
-            Route::post('/destroy', 'destroy')->name('cliente.destroy');
+            Route::post('/update/{id}', 'update')->name('cliente.update');
+            Route::delete('/destroy/{id}', 'destroy')->name('cliente.destroy');
         });
 
 /**

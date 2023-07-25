@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="div">
-        Olá {{$cliente->nome}}
+        Olá <p> olá {{auth()->user()->nome}}</p>
 
         <h2>Suas informações</h2>
         {{$cliente->celular}}

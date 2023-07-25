@@ -3,50 +3,30 @@
 
 @section('conteudo')
 
+@include('ProdutoCliente.partials.menu')
+
 <h1>Olá {{$cliente->nome}}</h1>
 
-@if ($cliente->email == $user->email)
+<p>Informações cadastradas:
 
-   Olá {{$user->nome}}
+{{$cliente->nome}},
+{{$cliente->email}},
+{{$cliente->celular}},
+{{$cliente->ddd}},
 
-   seu cadastro já existe
-
-   <div class="row">
-    <h2>Informações cadastradas:</h2>
-<div>
-    {{$cliente->celular}}
-</div>
-<div>
-    {{$cliente->ddd}}
-
-</div>
-<div>
-    {{$cliente->email}}
-</div>
-</div>
+</p>
 
 
 
-@endif
-
-<div class="row">
-        <h2>Informações cadastradas:</h2>
-    <div>
-        {{$cliente->celular}}
-    </div>
-    <div>
-        {{$cliente->ddd}}
-
-    </div>
-    <div>
-        {{$cliente->email}}
-    </div>
-</div>
+{{-- @php
+        $clientesEndereco = App\Models\ClienteEndereco::find(['id_cliente' => $cliente->id_cliente])->first();
+        $endereco = App\Models\ClienteEndereco::class;
+        $end = App\Models\Endereco::class;
 
 
-<h2>
-    Editar informações:
-    <a href="{{ route('cliente.edit', ['id'=>$cliente->id_cliente]) }}">Editar cadastro</a>
-</h2>
+@endphp --}}
+
+
+
 
 @endsection

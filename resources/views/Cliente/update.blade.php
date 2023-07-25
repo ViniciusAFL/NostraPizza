@@ -7,7 +7,7 @@
 
     @csrf
 
-    <label for="produto">Produto</label>
+    <label for="nome">Nome</label>
     <input type="text" name="nome" id="nome"
 
 
@@ -43,15 +43,10 @@ value="{{
     }}">
 
 
-        <input type="email" name="email" id="email"
 
-        {{-- TERNÁRIO (IF em uma linha só) --}}
-        value="{{
-            $cliente && $cliente->email !='' ?
-            $cliente->email:old(email)
-            }}">
-
+{{-- @dd($cliente); --}}
  <input type="submit" value="Atualizar">
+
     </form>
 
 @endsection

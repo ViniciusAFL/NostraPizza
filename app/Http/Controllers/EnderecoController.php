@@ -44,8 +44,8 @@ class EnderecoController extends Controller
 
         $endereco = Endereco::create($request->all());
 
-        $endereco = Cliente::find('id');
-        $endereco->roles()->attach('id');
+        // $endereco = Cliente::find('id');
+        // $endereco->roles()->attach('id');
 
     }
 
