@@ -225,8 +225,57 @@ body{
     background-color: #4d0d11;
   }
 
-  .corfont{
-    color: #fff ;
+  .form-contato{
+    margin-top: -150px;
+  }
+
+  .container-contato{
+    background-color: #130303;
+    margin-top: -200px;
+  }
+
+  .label-contato{
+    color: #ffcdbc;
+  }
+
+  .input-contato{
+    background-color: #4d0d11;
+    border: none;
+  }
+
+  .input-contato:focus{
+    background-color: #6d282d;
+  }
+
+  .input-contato::placeholder:focus{
+    color: #c59d8f;
+  }
+
+  .input-contato::placeholder{
+    color: #d1d1d1;
+  }
+
+  .input-contato:focus[type="text"], textarea {
+    color : #d1d1d1;
+  }
+
+  #btn-contato{
+    background-color: #2d080a;
+    border: none;
+  }
+
+  #btn-contato:hover{
+    background-color: #220507;
+  }
+
+  .fale-conosco-nome{
+    margin-top: -80px;
+    color: #d1d1d1;
+  }
+
+  .imagem-contato{
+    margin-top: -250px;
+    margin-bottom: 50px;
   }
 
 @media screen and (max-width: 700px ) and (max-width: 900px)  {
