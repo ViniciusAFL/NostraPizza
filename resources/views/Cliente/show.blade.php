@@ -5,27 +5,31 @@
 
 @include('ProdutoCliente.partials.menu')
 
-<h1>Olá {{$cliente->nome}}</h1>
 
-<p>Informações cadastradas:
+<h1>Detalhes do Cliente</h1>
 
-{{$cliente->nome}},
-{{$cliente->email}},
-{{$cliente->celular}},
-{{$cliente->ddd}},
+    <p>Nome: {{ $cliente->nome }}</p>
+    <p>Email: {{ $cliente->email }}</p>
+    <p>Telefone: {{$cliente->celular}}</p>
+    <p>DDD: {{$cliente->ddd}}</p>
+    <!-- Outros campos do cliente... -->
 
-</p>
+    <h2>Endereço</h2>
+
+   @foreach ($clientesEndereco as $cliend  )
+        <input type="hidden" name="id_endereco">
+        <input type="hidden" name="id_cliente">
+   @endforeach
+
+   @foreach ($enderecos as  $endereco)
+    <input type="hidden" name="id_endereco">
+   @endforeach
 
 
-
-{{-- @php
-        $clientesEndereco = App\Models\ClienteEndereco::find(['id_cliente' => $cliente->id_cliente])->first();
-        $endereco = App\Models\ClienteEndereco::class;
-        $end = App\Models\Endereco::class;
-
-
-@endphp --}}
-
+    <p>Rua: {{$cliend->endereco->id_endereco}} </p>
+    <p>Número: {{$cliend->endereco->numero}} </p>
+    <p>Cidade: {{$cliend->endereco->cidade}} </p>
+    <p>Estado:{{$cliend->endereco->uf}}  </p> -
 
 
 

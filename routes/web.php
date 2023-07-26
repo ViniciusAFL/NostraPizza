@@ -81,8 +81,8 @@ Route::middleware('auth')->group(function () {
     ->controller(ClienteController::class)
         ->group(function () {
 
-            if (Gate::allows('subs-only', Auth::user())) {
-                return view('subs');
+            if (Gate::allows('indexcli', Auth::user())) {
+                return view('Cliente.index');
           }
 
             Route::get('/','index')->name('cliente.index')->middleware('auth');

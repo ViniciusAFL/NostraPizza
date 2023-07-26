@@ -6,70 +6,24 @@
 
 
 @can('indexcli')
-<h1 class="corfont"> Cadastro cliente</h1>
+<h1 style="color: #FFF"> Cadastro cliente</h1>
 
-@foreach ($clientes as $cliente )
-    <input type="hidden" name="cliente">
+@foreach ($clientes as $cliente)
+    <input type="hidden" name="id_cliente" id="id_cliente">
+    <input type="hidden" name="email" id="email">
 @endforeach
 
-@foreach ($endereco as $endereco )
-    <td>
-        <input type="hidden" name="endereco">
-    </td>
-@endforeach
 
-@foreach ($clientesEndereco as $clientesEndereco )
-    <input type="hidden" name="clientesEndereco">
-@endforeach
-
-<p class="corfont">Olá {{auth()->user()->nome}} {{$cliente->id_cliente}}</p>
-<a href="{{ route('cliente.show', ['id'=>$cliente->id_cliente]) }}">VER</a>
-@if ($cliente->email == auth()->user()->email)
-
-@endif
-
-@if (auth()->user()->email || $cliente->email == null)
-    <a href="{{ route('cliente.create') }}">Cadastrar</a>
-@endif
+<a href="{{ route('cliente.show', ['id'=>$clientes->id_cliente]) }}">VER</a>
 
 
 
-@if ($cliente->id_cliente && $clientesEndereco->cliente->id_cliente && $clientesEndereco->endereco->id_endereco == $endereco->id_endereco)
-    <p class="corfont">
-        Seu endereco:
-        {{!!
-            $clientesEndereco->endereco
-        !!}}
-        <table class="table">
-            <thead>
-                <td>ID</td>
-                <td>Endereco</td>
-                <td>Numero</td>
-                <td>Complemento</td>
-                <td>Bairro</td>
-                <td>Cidade</td>
-                <td>UF</td>
-                <td>Cep</td>
-            </thead>
-            <tbody>
-                <td>{{$endereco->id_endereco}}</td>
-                <td>{{$endereco->endereco}}</td>
-                <td>{{$endereco->numero}}</td>
-                <td>{{$endereco->complemento}}</td>
-                <td>{{$endereco->bairro}}</td>
-                <td>{{$endereco->cidade}}</td>
-                <td>{{$endereco->uf}}</td>
-                <td>{{$endereco->cep}}</td>
-            </tbody>
-        </table>
-
-    </p>
 
 
-@else
-<p>Endereço não cadastrado</p>
-@endif
+
 @endcan
+
+
 
 @cannot('indexcli')
 <h1 class="corfont"> - Aréa Administrativa</h1>
