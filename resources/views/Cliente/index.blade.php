@@ -26,7 +26,7 @@
 
 
 @cannot('indexcli')
-<h1 class="corfont"> - Aréa Administrativa</h1>
+<h1 style="color:#FFF"> - Aréa Administrativa</h1>
 <table class="table">
     <thead>
         <tr>
@@ -40,8 +40,12 @@
     </thead>
 
     <tbody>
-        @foreach ($clientes as $cliente)
 
+        @php
+            $clientes = DB::select('select * from clientes')
+        @endphp
+
+           @foreach ($clientes as $cliente)
         <tr>
             <td>
                 <a class="btn btn-warning" href="{{ route('cliente.edit', ['id'=>$cliente->id_cliente]) }}">Editar</a>

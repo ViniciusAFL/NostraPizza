@@ -16,17 +16,21 @@ class ClienteController extends Controller
      */
     public function index()
     {
-
-         $clientesEndereco = ClienteEndereco::class;
-         $endereco = Endereco::class;
+        $clientesEndereco = ClienteEndereco::class;
+        $endereco = Endereco::class;
 
         $emailAutenticado = Auth::user()->email;
 
         $clientes = Cliente::where('email', $emailAutenticado)->first();
 
+           if (Auth::user()->id_cargo != 1 && !$clientes) {
+                return view('Cliente.index') ->with(compact('clientes', 'endereco', 'clientesEndereco'));
+           }
+
         if (!$clientes) {
             return redirect()->route('cliente.create')->with('warning', 'Cliente não encontrado.');
         }
+
 
         return view('Cliente.index') ->with(compact('clientes', 'endereco', 'clientesEndereco'));
     }

@@ -1,67 +1,76 @@
 @extends('layouts.base')
 
 @section('conteudo')
-
-@include('ProdutoCliente.partials.menu')
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Produto </title>
-</head>
-<body>
+    @include('layouts.menu')
 
 
+    <!DOCTYPE html>
+    <html lang="en">
 
-<div class="row text-center">
-    <H1><i class="fa-solid fa-plate-wheat"></i> Cardápio - Pizzas</H1>
-</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Produto </title>
+    </head>
 
-    @foreach ($produtos as $produto)
+    <body>
 
 
-    {{-- <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"> {{$produto->nome}}</h5>
-              <p class="card-text"> {{$produto->descricao}}</p>
+
+        <div class="row text-center">
+            <div class="col-12">
+                <H1><i class="fa-solid fa-plate-wheat"></i> Cardápio - Pizzas</H1>
             </div>
-            <a class="btn btn-success mb-2" href="{{ route('ProdutoCliente.show', ['id'=>$produto->id_produto]) }}">Ver</a>
-            <a class="btn btn-success mb-2" href="#">Comprar</a>
-          </div>
-        </div> --}}
-    <div class="row dicas mt-3">
-        <div class="col-sm-4 card"style="padding: 3%;">
-            <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($produto->foto) .'" height="auto" width="300px" />'; ?>
-                <h2><?php echo $produto->nome;?></h2>
-                <div class="flex-row">
-                <!-- Mostrar -->
-                     <a class="btn btn-success " href="{{ route('ProdutoCliente.show', ['id'=>$produto->id_produto]) }}?>">Descrição da produto
-                         <i class="bi bi-eye-fill"></i>
-                        </a>
-                         <!-- Mostrar -->
-                         <a class="btn btn-primary " href="#">Comprar
-
-                  </a>
-                </div>
-            </div>
-
-
         </div>
 
-      @endforeach
+
+
+
+
+
+            <div class="container" >
+
+
+
+                    <div class="row bg-danger " >
+
+                        @foreach ($produtos as $produto)
+                        <div class="col-3 bg-success">
+
+                            <div class="card d-flex justify-content-cen" style="width: 250px; height: 250px; margin:10px; padding: 10px;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title" > <?php echo $produto->nome; ?></h5>
+                                    <p class="card-text" style="font-size: 15px; ">
+
+                                    </p>
+                                    <a href="{{ route('produto.show', ['id' => $produto->id_produto]) }}"
+                                        class="btn btn-primary">Ver</a>
+                                    <a href="#" class="btn btn-success">Comprar</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        @endforeach
+                    </div>
+                    </div>
+
+
+            </div>
+
+
+
+
+
+            </div>
+
+
+
     </body>
+
     @include('layouts.rodape')
-@endsection
-@section('scripts')
-@endsection
+    @endsection
+    @section('scripts')
+
 </html>
-
-
-
