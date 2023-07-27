@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EnderecoController;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Contracts\Pagination\Paginator;
+
 
 class ClienteController extends Controller
 {
@@ -24,7 +26,7 @@ class ClienteController extends Controller
         $clientes = Cliente::where('email', $emailAutenticado)->first();
 
            if (Auth::user()->id_cargo != 1 && !$clientes) {
-                return view('Cliente.index') ->with(compact('clientes', 'endereco', 'clientesEndereco'));
+                return redirect()->route('Cliente.index') ->with(compact('clientes', 'endereco', 'clientesEndereco'));
            }
 
         if (!$clientes) {
@@ -88,7 +90,6 @@ class ClienteController extends Controller
         $enderecos = Endereco::all();
         $clientesEndereco = ClienteEndereco::all();
 
-        // Verificar se o cliente foi encontrado
         if (!$cliente) {
             return redirect()->route('cliente.index')->with('error', 'Cliente não encontrado.');
         }
