@@ -18,23 +18,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientesEndereco = ClienteEndereco::class;
-        $endereco = Endereco::class;
-
-        $emailAutenticado = Auth::user()->email;
-
-        $clientes = Cliente::where('email', $emailAutenticado)->first();
-
-           if (Auth::user()->id_cargo != 1 && !$clientes) {
-                return redirect()->route('Cliente.index') ->with(compact('clientes', 'endereco', 'clientesEndereco'));
-           }
-
-        if (!$clientes) {
-            return redirect()->route('cliente.create')->with('warning', 'Cliente não encontrado.');
-        }
-
-
-        return view('Cliente.index') ->with(compact('clientes', 'endereco', 'clientesEndereco'));
+        $cliente = Cliente::all();
+        return view('Cliente.index')->with(compact('cliente'));
     }
 
     /**
@@ -89,10 +74,6 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
         $enderecos = Endereco::all();
         $clientesEndereco = ClienteEndereco::all();
-
-        if (!$cliente) {
-            return redirect()->route('cliente.index')->with('error', 'Cliente não encontrado.');
-        }
 
         return view('Cliente.show')->with(compact('cliente', 'enderecos', 'clientesEndereco'));
 

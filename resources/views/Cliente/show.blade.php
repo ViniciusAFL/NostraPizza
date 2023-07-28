@@ -17,8 +17,7 @@
 
     <h2>Endereço</h2>
 
-
-   @foreach ($clientesEndereco as $cliend  )
+   @foreach ($clientesEndereco as $cliend)
         <input type="hidden" name="id_endereco">
         <input type="hidden" name="id_cliente">
    @endforeach

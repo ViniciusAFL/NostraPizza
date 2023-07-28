@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{ProdutoCli,TipoProduto};
 use App\Http\Requests\StoreProdutoRequest;
 use App\Http\Requests\UpdateProdutoRequest;
+use Illuminate\Pagination\Paginator;
 
 
 class ProdutoCliController extends Controller

@@ -278,9 +278,58 @@ body{
     margin-bottom: 50px;
   }
 
-  .indexcli{
-    margin-top: 10px;
+  .bg-cardapio{
+    margin-top: -150px;
   }
+
+  .bg-container-cardapio{
+    background-color: #130303
+  }
+
+  .cardapio-name{
+    color: #d1d1d1;
+  }
+
+  .input-pesquisar{
+    border-radius: 5px;
+  }
+
+  .input-pesquisar::placeholder{
+    font-size: 13px;
+  }
+
+
+  .button-pesquisar{
+    border-radius: 5px;
+    border: none;
+    background-color: #220709;
+    color: #ffcdbc;
+    font-size: 15px;
+
+  }
+
+  .button-pesquisar:hover{
+    color: #d4ada0;
+  }
+
+  .bi-search{
+    color: #d1d1d1;
+  }
+
+  #btn-comprar-ver{
+    background-color: #f5853f;
+    color: #220709;
+  }
+
+  #btn-comprar-ver:hover{
+    background-color: #a85827;
+  }
+
+  .card-cardapio{
+    background-color: #220b0c;
+    color: #d4ada0;
+  }
+
 
 @media screen and (max-width: 700px ) and (max-width: 900px)  {
     .bg-sobre-pizzaria{

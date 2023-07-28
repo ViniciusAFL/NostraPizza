@@ -2,6 +2,11 @@
 
 @section('conteudo')
 
+@include('layouts.menu')
+
+<link rel="stylesheet" href="{{ asset('nostra.css') }}">
+
+<div class="container indexcli" style="color: #fff">
 <div class="row">
     <form action="{{ route('cliente.store') }}" method="post">
         @csrf
@@ -73,6 +78,6 @@
                 </div>
                 <button class="btn btn-success mt-2" type="submit">Cadastrar</button>
             </form>
-
+        </div>
 
 @endsection

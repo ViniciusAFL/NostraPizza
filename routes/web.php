@@ -16,6 +16,7 @@ use App\Http\Controllers\{
     IndexSite,
     ContatoController,
     User,
+    PesquisaController,
 };
 use Database\Factories\EnderecoFactory;
 use Illuminate\Support\Facades\Gate;
@@ -87,7 +88,7 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/','index')->name('cliente.index')->middleware('auth');
 
-            Route::get('/novo','create')->name('cliente.create');
+            Route::get('/novo','create')->name('cliente.create')->middleware('auth');
             Route::get('/{id}','show')->name('cliente.show');
             Route::get('/editar/{id}','edit')->name('cliente.edit');
 
@@ -205,8 +206,15 @@ Route::middleware('auth')->group(function () {
             });
 
 // CONTATO
-Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
-Route::post('contato-enviar', [ContatoController::class, 'send'])->name('contato.send');
+    Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
+    Route::post('contato-enviar', [ContatoController::class, 'send'])->name('contato.send');
+
+//Pesquisa
+  Route::prefix('pesquisa')
+  ->controller(PesquisaController::class)
+  ->group(function () {
+      Route::get('/pesquisa','filtrar')->name('pesquisa.filtrar');
+  });
 
 
 
