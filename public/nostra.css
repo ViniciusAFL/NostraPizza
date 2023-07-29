@@ -329,6 +329,9 @@ body{
     background-color: #220b0c;
     color: #d4ada0;
   }
+  .indexcli{
+    padding-top: 1px;
+  }
 
 
 @media screen and (max-width: 700px ) and (max-width: 900px)  {

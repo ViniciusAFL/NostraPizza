@@ -33,30 +33,19 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        $validaded = $request->validate([
-            'endereco' => 'required',
-            'numero' => 'required',
-            'bairro' => 'required',
-            'cidade' => 'required',
-            'uf' => 'required',
-            'cep' => 'required'
-        ]);
-
-        $endereco = Endereco::create($request->all());
-
-        // $endereco = Cliente::find('id');
-        // $endereco->roles()->attach('id');
-
+        // $endereco = null;
+        // $endereco = Endereco::create($request->all());
+        // return redirect()->route('Cliente.show', ['id' =>$cliente->id_cliente])->with('success', 'cadastrado com sucesso!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
-    {
-        $endereco = Endereco::find($id);
-        return view('cliente.show')->with(compact('cliente'));
-    }
+    // public function show(int $id)
+    // {
+    //     $endereco = Endereco::find($id);
+    //     return view('cliente.show')->with(compact('cliente'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -64,7 +53,9 @@ class EnderecoController extends Controller
     public function edit(int $id)
     {
         $endereco = Endereco::find($id);
-        return view ('cliente.form')->with(compact('cliente'));
+
+        return view('Cliente.updateEndereco')->with(compact('endereco'));
+
     }
 
     /**

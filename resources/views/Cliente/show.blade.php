@@ -8,38 +8,68 @@
 <link rel="stylesheet" href="{{ asset('nostra.css') }}">
 
 <div class="container indexcli" style="color: #FFF">
-<h1>Detalhes do Cliente</h1>
+
+    <h2>Cadastrar Um Endereço:</h2>
+        <a class="btn btn-warning mb-2" href="{{ route('createEndereco', ['id_cliente' => $cliente->id_cliente]) }}">Cadastrar Endereço</a>
+
+    <h1>Detalhes do Cliente</h1>
 
     <p>Nome: {{ $cliente->nome }}</p>
     <p>Email: {{ $cliente->email }}</p>
     <p>Telefone: {{$cliente->celular}}</p>
     <p>DDD: {{$cliente->ddd}}</p>
 
-    <h2>Endereço</h2>
 
-   @foreach ($clientesEndereco as $cliend)
-        <input type="hidden" name="id_endereco">
-        <input type="hidden" name="id_cliente">
-   @endforeach
+        @foreach ($enderecos as $endereco)
+            <input type="hidden" name="id_endereco">
+        @endforeach
 
-   @foreach ($enderecos as  $endereco)
-    <input type="hidden" name="id_endereco">
-   @endforeach
 
-           @if ($cliend->endereco->id_endereco <> $endereco->id_endereco || $cliend->cliente->id_cliente <> $cliente->id_cliente)
-                <p>Cliente não possui um endereço.</p>
+        <p>Endereços do cliente:</p>
+        @foreach ($clientesEndereco as $cliend )
 
-                @else
-                <p>Rua: {{$cliend->endereco->endereco}} </p>
-                <p>Bairro: {{$cliend->endereco->bairro}}</p>
-                <p>Cep: {{$cliend->endereco->cep}}</p>
-                <p>Complemento: {{$cliend->endereco->complemento}}</p>
-                <p>Número: {{$cliend->endereco->numero}} </p>
-                <p>Cidade: {{$cliend->endereco->cidade}} </p>
-                <p>Estado:{{$cliend->endereco->uf}}  </p>
-           @endif
+            @if ($cliente->id_cliente == $cliend->cliente->id_cliente)
 
-</div>
+            {{-- @dd($cliend->endereco->id_endereco) --}}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Ações</th>
+                        <th>ID_ENDEREÇO</th>
+                        <th>ENDEREÇO</th>
+                        <th>NUMERO</th>
+                        <th>BAIRRO</th>
+                        <th>CIDADE</th>
+                        <th>CEP</th>
+                        <th>UF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>
+                                <a class="btn btn-success" href="{{ route('endereco.edit', ['id'=>$cliend->cliente->id_cliente]) }}">Editar</a>
+
+                            </td>
+
+                            <td>{{$cliend->endereco->id_endereco}}</td>
+                            <td>{{$cliend->endereco->endereco}}</td>
+                            <td>{{$cliend->endereco->numero}}</td>
+                            <td>{{$cliend->endereco->bairro}}</td>
+                            <td>{{$cliend->endereco->cidade}}</td>
+                            <td>{{$cliend->endereco->cep}}</td>
+                            <td>{{$cliend->endereco->uf}}</td>
+
+                        </tr>
+                </tbody>
+            @endif
+
+        @endforeach
+
+    </div>
+
+
+
+
 
 
 @endsection

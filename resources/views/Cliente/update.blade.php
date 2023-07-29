@@ -43,8 +43,6 @@ value="{{
     }}">
 
 
-
-{{-- @dd($cliente); --}}
  <input type="submit" value="Atualizar">
 
     </form>

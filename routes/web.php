@@ -92,7 +92,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/{id}','show')->name('cliente.show');
             Route::get('/editar/{id}','edit')->name('cliente.edit');
 
+            //endereços
+            Route::get('/novo','createEndereco')->name('createEndereco');
+            Route::get('/editEndereco/editar/{id}','EnderecoEdit')->name('editEndereco');
+            Route::post('/endereco/store','enderecoStore')->name('enderecoStore');
+
             Route::post('/store', 'store')->name('cliente.store');
+
             Route::post('/update/{id}', 'update')->name('cliente.update');
             Route::delete('/destroy/{id}', 'destroy')->name('cliente.destroy');
         });
