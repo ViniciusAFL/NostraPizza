@@ -114,7 +114,6 @@ class ClienteController extends Controller
 
     public function enderecoStore(Request $request)  {
         $enderecos = Endereco::create([
-            // 'id_cliente' => $id_cliente,
             'endereco' => $request->endereco,
             'numero' => $request->numero,
             'complemento' => $request->complemento,
@@ -143,16 +142,53 @@ class ClienteController extends Controller
         return redirect()->route('cliente.index')->with('successo', 'cadastrado com sucesso.');
     }
 
-    public function EnderecoEdit(int $id)
+    public function editEndereco(int $id_cliente, $id_endereco)
     {
-        $clientesend = ClienteEndereco::find($id);
-        $endereco = Endereco::class;
-        // $enderecos = $clientesend->endereco();
 
-        return view ('Cliente.updateEndereco')->with(compact('clientesend', 'endereco'));
+        $cliend = ClienteEndereco::where('id_cliente', $id_cliente)
+        ->where('id_endereco', $id_endereco)
+        ->first();
+
+        $endereco = Endereco::find($id_endereco);
+
+         return view('Cliente.updateEndereco', compact('cliend', 'endereco'));
+
+    }
+
+
+    public function updateEndereco(Request $request, int $id_cliente, $id_endereco)
+    {
+        // $cliend = ClienteEndereco::where('id_cliente', $id_cliente)
+        //                              ->where('id_endereco', $id_endereco)
+        //                              ->first();
+
+        // $cliend->endereco->endereco = $request->input('endereco');
+        // $cliend->endereco->rua = $request->input('rua');
+        // $cliend->endereco->numero = $request->input('numero');
+        // $cliend->endereco->complemento = $request->input('complemento');
+        // $cliend->endereco->uf = $request->input('uf');
+        // $cliend->endereco->cep = $request->input('cep');
+
+        // $cliend->save();
+
+
+        $cliend = ClienteEndereco::where('id_cliente', $id_cliente)
+        ->where('id_endereco', $id_endereco)
+        ->first();
+
+        $endereco = Endereco::find($id_endereco);
+        $endereco->update($request->all());
+
+         return redirect()->route('cliente.show', ['id_cliente'=>$cliend->cliente->id_cliente])
+         ->with('success', 'Atualizado com Sucesso!');
+
+        //return redirect()->back()->with('success', 'atualizado com sucesso');
 
 
     }
+
+
+
 
 
 

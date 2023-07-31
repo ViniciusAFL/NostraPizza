@@ -25,12 +25,12 @@
         @endforeach
 
 
+
         <p>Endereços do cliente:</p>
+
         @foreach ($clientesEndereco as $cliend )
+        @if ($cliente->id_cliente == $cliend->cliente->id_cliente)
 
-            @if ($cliente->id_cliente == $cliend->cliente->id_cliente)
-
-            {{-- @dd($cliend->endereco->id_endereco) --}}
             <table class="table">
                 <thead>
                     <tr>
@@ -47,10 +47,11 @@
                 <tbody>
                         <tr>
                             <td>
-                                <a class="btn btn-success" href="{{ route('endereco.edit', ['id'=>$cliend->cliente->id_cliente]) }}">Editar</a>
-
+                                <a class="btn btn-success" href="{{ route('editEndereco',
+                                ['id_cliente' => $cliend->cliente->id_cliente,
+                                'id_endereco' => $cliend->endereco->id_endereco] ) }}">
+                                Editar</a>
                             </td>
-
                             <td>{{$cliend->endereco->id_endereco}}</td>
                             <td>{{$cliend->endereco->endereco}}</td>
                             <td>{{$cliend->endereco->numero}}</td>
@@ -61,9 +62,11 @@
 
                         </tr>
                 </tbody>
-            @endif
+                @endif
 
-        @endforeach
+                @endforeach
+        </table>
+
 
     </div>
 
