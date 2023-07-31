@@ -17,6 +17,8 @@ use App\Http\Controllers\{
     ContatoController,
     User,
     PesquisaController,
+    GerenteController,
+    UserController,
 };
 use Database\Factories\EnderecoFactory;
 use Illuminate\Support\Facades\Gate;
@@ -32,17 +34,18 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::prefix('/')
-->controller(IndexSite::class)->group(function () {
-    Route::get('/', 'index')->name('index');
-});
+    ->controller(IndexSite::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
 
 
 Route::prefix('index')
     ->controller(IndexSite::class)
     ->group(function () {
-    Route::get('/', 'index')->name('index');
-            });
+        Route::get('/', 'index')->name('index');
+    });
 
 Route::get('/dashboard', function () {
     return view('index');
@@ -59,13 +62,13 @@ Route::middleware('auth')->group(function () {
  * | Cargos
  * -----------------------------------
  */
-    Route::prefix('cargos')
+Route::prefix('cargos')
     ->controller(CargoController::class)
     ->group(function () {
-        Route::get('/','index')->name('cargo.index');
-        Route::get('/novo','create')->name('cargo.create');
-        Route::get('/{id}','show')->name('cargo.show');
-        Route::get('/editar/{id}','edit')->name('cargo.edit');
+        Route::get('/', 'index')->name('cargo.index');
+        Route::get('/novo', 'create')->name('cargo.create');
+        Route::get('/{id}', 'show')->name('cargo.show');
+        Route::get('/editar/{id}', 'edit')->name('cargo.edit');
 
         Route::post('/store', 'store')->name('cargo.store');
         Route::post('/update', 'update')->name('cargo.update');
@@ -78,44 +81,42 @@ Route::middleware('auth')->group(function () {
  * | Cliente
  * -----------------------------------
  */
-    Route::prefix('clientes')
+Route::prefix('clientes')
     ->controller(ClienteController::class)
-        ->group(function () {
+    ->group(function () {
 
-            if (Gate::allows('indexcli', Auth::user())) {
-                return view('Cliente.index');
-          }
+        if (Gate::allows('indexcli', Auth::user())) {
+            return view('Cliente.index');
+        }
 
-            Route::get('/','index')->name('cliente.index')->middleware('auth');
+        Route::get('/', 'index')->name('cliente.index')->middleware('auth');
 
-            Route::get('/novo','create')->name('cliente.create')->middleware('auth');
-            Route::get('show/{id_cliente}','show')->name('cliente.show');
-            Route::get('/editar/{id}','edit')->name('cliente.edit');
-            Route::post('/store', 'store')->name('cliente.store');
-            Route::post('/update/{id}', 'update')->name('cliente.update');
-            Route::delete('/destroy/{id}', 'destroy')->name('cliente.destroy');
+        Route::get('/novo', 'create')->name('cliente.create')->middleware('auth');
+        Route::get('show/{id_cliente}', 'show')->name('cliente.show');
+        Route::get('/editar/{id}', 'edit')->name('cliente.edit');
+        Route::post('/store', 'store')->name('cliente.store');
+        Route::post('/update/{id}', 'update')->name('cliente.update');
+        Route::delete('/destroy/{id}', 'destroy')->name('cliente.destroy');
 
-            //endereços
-            Route::get('/novo','createEndereco')->name('createEndereco');
-            Route::get('/editEndereco/editar/{id_cliente}/{id_endereco}','editEndereco')->name('editEndereco');
+        //endereços
+        Route::get('/novo', 'createEndereco')->name('createEndereco');
+        Route::get('/editEndereco/editar/{id_cliente}/{id_endereco}', 'editEndereco')->name('editEndereco');
 
-            Route::post('/updateEndereco/{id_cliente}/{id_endereco}', 'updateEndereco')->name('updateEndereco');
-
-
-        });
+        Route::post('/updateEndereco/{id_cliente}/{id_endereco}', 'updateEndereco')->name('updateEndereco');
+    });
 
 /**
  * -----------------------------------
  * | Endereco
  * -----------------------------------
  */
-    Route::prefix('enderecos')
+Route::prefix('enderecos')
     ->controller(EnderecoController::class)
     ->group(function () {
-        Route::get('/','index')->name('endereco.index');
-        Route::get('/novo','create')->name('endereco.create');
-        Route::get('/{id}','show')->name('endereco.show');
-        Route::get('/editar/{id}','edit')->name('endereco.edit');
+        Route::get('/', 'index')->name('endereco.index');
+        Route::get('/novo', 'create')->name('endereco.create');
+        Route::get('/{id}', 'show')->name('endereco.show');
+        Route::get('/editar/{id}', 'edit')->name('endereco.edit');
 
         Route::post('/store', 'store')->name('endereco.store');
         Route::post('/update', 'update')->name('endereco.update');
@@ -127,13 +128,13 @@ Route::middleware('auth')->group(function () {
  * | Pedidos
  * -----------------------------------
  */
-    Route::prefix('pedidos')
+Route::prefix('pedidos')
     ->controller(PedidoController::class)
     ->group(function () {
-        Route::get('/','index')->name('pedido.index');
-        Route::get('/novo','create')->name('pedido.create');
-        Route::get('/{id}','show')->name('pedido.show');
-        Route::get('/editar/{id}','edit')->name('pedido.edit');
+        Route::get('/', 'index')->name('pedido.index');
+        Route::get('/novo', 'create')->name('pedido.create');
+        Route::get('/{id}', 'show')->name('pedido.show');
+        Route::get('/editar/{id}', 'edit')->name('pedido.edit');
 
         Route::post('/store', 'store')->name('pedido.store');
         Route::post('/update', 'update')->name('pedido.update');
@@ -145,13 +146,13 @@ Route::middleware('auth')->group(function () {
  * | Produto
  * -----------------------------------
  */
-    Route::prefix('produtos')
+Route::prefix('produtos')
     ->controller(ProdutoController::class)
     ->group(function () {
-        Route::get('/','index')->name('produto.index');
-        Route::get('/novo','create')->name('produto.create');
-        Route::get('/{id}','show')->name('produto.show');
-        Route::get('/editar/{id}','edit')->name('produto.edit');
+        Route::get('/', 'index')->name('produto.index');
+        Route::get('/novo', 'create')->name('produto.create');
+        Route::get('/{id}', 'show')->name('produto.show');
+        Route::get('/editar/{id}', 'edit')->name('produto.edit');
 
         Route::get('/tamanho/{id_produto}', 'createTamanho')->name('produto.createTamanho');
         Route::get('/tamanho/editar/{id}', 'editTamanho')->name('produto.editTamanho');
@@ -172,13 +173,13 @@ Route::middleware('auth')->group(function () {
  * | Tamanhos
  * -----------------------------------
  */
-    Route::prefix('tamanhos')
+Route::prefix('tamanhos')
     ->controller(ProdutoTamanhoController::class)
     ->group(function () {
-        Route::get('/','index')->name('tamanho.index');
-        Route::get('/novo','create')->name('tamanho.create');
-        Route::get('/{id}','show')->name('tamanho.show');
-        Route::get('/editar/{id}','edit')->name('tamanho.edit');
+        Route::get('/', 'index')->name('tamanho.index');
+        Route::get('/novo', 'create')->name('tamanho.create');
+        Route::get('/{id}', 'show')->name('tamanho.show');
+        Route::get('/editar/{id}', 'edit')->name('tamanho.edit');
 
         Route::post('/store', 'store')->name('tamanho.store');
         Route::post('/update/{id}', 'update')->name('tamanho.update');
@@ -192,12 +193,12 @@ Route::middleware('auth')->group(function () {
  * | Produto Cliente
  * -----------------------------------
  */
-    Route::prefix('ProdutoCliente')
+Route::prefix('ProdutoCliente')
     ->controller(ProdutoCliController::class)
     ->group(function () {
-    Route::get('/','index')->name('ProdutoCliente.index');
-    Route::get('/{id}','show')->name('ProdutoCliente.show');
-            });
+        Route::get('/', 'index')->name('ProdutoCliente.index');
+        Route::get('/{id}', 'show')->name('ProdutoCliente.show');
+    });
 
 
 /**
@@ -205,25 +206,52 @@ Route::middleware('auth')->group(function () {
  * | Promoções
  * -----------------------------------
  */
-    Route::prefix('Promocao')
+Route::prefix('Promocao')
     ->controller(PrecoPromocao::class)
     ->group(function () {
-    Route::get('/','index')->name('PromocaoCli.index');
-    Route::get('/{id}','show')->name('PromocaoCli.show');
-            });
+        Route::get('/', 'index')->name('PromocaoCli.index');
+        Route::get('/{id}', 'show')->name('PromocaoCli.show');
+    });
 
 // CONTATO
-    Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
-    Route::post('contato-enviar', [ContatoController::class, 'send'])->name('contato.send');
+Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
+Route::post('contato-enviar', [ContatoController::class, 'send'])->name('contato.send');
 
 //Pesquisa
-  Route::prefix('pesquisa')
-  ->controller(PesquisaController::class)
-  ->group(function () {
-      Route::get('/pesquisa','filtrar')->name('pesquisa.filtrar');
-  });
+Route::prefix('pesquisa')
+    ->controller(PesquisaController::class)
+    ->group(function () {
+        Route::get('/pesquisa', 'filtrar')->name('pesquisa.filtrar');
+    });
 
+/**
+ * -----------------------------------
+ * | User
+ * -----------------------------------
+ */
+Route::prefix('User')
+    ->controller(UserController::class)
+    ->group(function () {
+        Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+        Route::post('/store', 'store', [UserController::class, 'store'])->name('user.store');
+        Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::delete('/excluir', 'excluir')->name('user.excluir');
+    });
 
+//Gerente
 
+Route::prefix('gerentes')
+    ->controller(GerenteController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('gerente.index');
+        Route::get('/novo', 'create')->name('gerente.create');
+        Route::get('/{id}', 'show')->name('gerente.show');
+        Route::get('/editar/{id}', 'edit')->name('gerente.edit');
 
-require __DIR__.'/auth.php';
+        Route::post('/store', 'store')->name('gerente.store');
+        Route::post('/update', 'update')->name('gerente.update');
+        Route::post('/destroy/{id}', 'destroy')->name('gerente.destroy');
+    });
+
+require __DIR__ . '/auth.php';

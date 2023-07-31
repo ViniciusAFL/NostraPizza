@@ -17,7 +17,7 @@ use App\Models\{
 };
 use Ramsey\Uuid\Type\Integer;
 
-class CargoController extends Controller
+class GerenteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,12 +25,12 @@ class CargoController extends Controller
     public function index()
     {
 
-        $cargos = DB::select('select * from users where id_cargo = 3');
+        $gerentes = DB::select('select * from users where id_cargo = 2');
 
 
 
-        return view('cargo.index')
-            ->with(compact('cargos'));
+        return view('gerente.index')
+            ->with(compact('gerentes'));
     }
 
     /**
@@ -38,21 +38,27 @@ class CargoController extends Controller
      */
     public function create()
     {
-        $cargo = null;
-        return view('cargo.form')
-            ->with(compact('cargo'));
+        $gerente = null;
+        return view('gerente.form')
+            ->with(compact('gerente'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $cargo = Cargo::create($request->all());
-        return redirect()
-            ->route('cargo.index')
-            ->with('success', 'Cadastrado com Sucesso!');
-    }
+    // public function store(Request $request)
+    // {
+    //     $data = $request->validate([
+    //         'nome' => 'required|string',
+    //         'email' => 'required|email|unique:users,email',
+    //         'password' => 'required|min:6',
+    //         'id_cargo' => 'required|int',
+
+    //     ]);
+
+    //     User::create($data);
+
+    //     return redirect()->route('user.create')->with('success', 'Usuário cadastrado com sucesso!');}
 
     /**
      * Display the specified resource.
@@ -69,9 +75,8 @@ class CargoController extends Controller
      */
     public function edit(int $id)
     {
-        $cargo = Cargo::find($id);
-        return view('cargo.form')
-            ->with(compact('cargo'));
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -82,10 +87,10 @@ class CargoController extends Controller
 
 
         // DB::insert('insert into users(id_cargo) value(?)');
-        $cargo = Cargo::find($id);
-        $cargo->update($request->all());
+        $gerente = Cargo::find($id);
+        $gerente->update($request->all());
             return redirect()
-            ->route('cargo.index')
+            ->route('gerente.index')
             ->with('success','Atualizado com sucesso!');
     }
 

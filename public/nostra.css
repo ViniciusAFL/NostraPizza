@@ -333,6 +333,56 @@ body{
     padding-top: 1px;
   }
 
+  .input-create-user{
+    border-radius: 5px;
+    background-color: #4d0d11;
+    color: #ffcdbc;
+    border: none;
+  }
+
+  .input-create-user::placeholder{
+    color: #ffcdbc;
+    font-size: 14px;
+  }
+
+  .bg-create-user{
+    background-color: #130303;
+
+  }
+
+  .color-cargos{
+    color: #ffcdbc;
+  }
+
+  .btn-create-user{
+    border-radius: 5px;
+    background-color: #69171c;
+    border: none;
+    color: #d1d1d1;
+    padding: 5px;
+    margin-left: 3px;
+  }
+
+  .btn-create-user:hover{
+    background-color: #6d282d;
+  }
+
+  .funcionarios-color{
+    color: #d1d1d1;
+  }
+
+  .btn-create-gerentes{
+    background-color: #a85827;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: #270809;
+  }
+
+  .btn-create-gerentes:hover{
+    background-color: #914d23;
+  }
+
 
 @media screen and (max-width: 700px ) and (max-width: 900px)  {
     .bg-sobre-pizzaria{

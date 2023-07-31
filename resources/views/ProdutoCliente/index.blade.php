@@ -46,7 +46,6 @@
 
                 </div>
 
-
             </div>
             @include('layouts.rodape')
         </div>
