@@ -372,7 +372,7 @@ body{
   }
 
   .btn-create-gerentes{
-    background-color: #a85827;
+    background-color: #f5853f;
     border: none;
     border-radius: 5px;
     padding: 5px;
@@ -382,6 +382,62 @@ body{
   .btn-create-gerentes:hover{
     background-color: #914d23;
   }
+
+  .cont-cliente{
+    margin-top: -150px;
+  }
+
+  .bg-cont-cliente{
+    background-color: #130303;
+  }
+
+  .btn-clientes{
+    background-color: #f5853f;
+    color: #270809;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  .btn-clientes:hover{
+    background-color: #a85827;
+  }
+
+  .cont-cliente-edit{
+    margin-top: 8px;
+    background-color: #130303;
+  }
+
+  .cont-clientes-edit-1{
+    margin-top: -15px;
+  }
+
+  .label-cliente-edit{
+    color: #ffcdbc;
+  }
+
+  .input-clientes-edit{
+    background-color: #f5853f;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .input-clientes-edit:hover{
+    background-color: #a85827;
+  }
+
+  .input-form-clientes{
+    background-color: #69171c;
+    border-radius: 5px;
+    background-color: #69171c;
+    border: none;
+    color: #d1d1d1;
+    padding: 5px;
+    margin-left: 3px;
+  }
+
+
 
 
 @media screen and (max-width: 700px ) and (max-width: 900px)  {
