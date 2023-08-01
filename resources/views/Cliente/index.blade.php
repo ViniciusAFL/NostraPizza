@@ -3,12 +3,13 @@
 @section('conteudo')
 
     @include('layouts.menu')
-
-    @can('indexcli')
     <link rel="stylesheet" href="{{ asset('nostra.css') }}">
+    @can('indexcli')
+
 
     <div class="container indexcli">
         <h1 style="color:#FFF"> - Área Administrativa</h1>
+        <h2 style="color: #FFF"><a class="btn btn-primary" href="{{ route('cliente.create') }}">Cadastrar cliente</a></h2>
         <table class="table">
             <thead>
                 <tr>
@@ -32,9 +33,9 @@
                     <tr>
                         <td>
                             <a class="btn btn-warning"
-                                href="{{ route('cliente.edit', ['id' => $cliente->id_cliente]) }}">Editar</a>
+                                href="{{ route('cliente.edit', ['id_cliente' => $cliente->id_cliente]) }}">Editar</a>
                             <a class="btn btn-success"
-                                href="{{ route('cliente.show', ['id' => $cliente->id_cliente]) }}">Ver</a>
+                                href="{{ route('cliente.show', ['id_cliente' => $cliente->id_cliente]) }}">Ver</a>
                         </td>
 
                         <td>{{ $cliente->id_cliente }}</td>
@@ -56,9 +57,9 @@
     @endcan
 
     @cannot('indexcli')
-        <link rel="stylesheet" href="{{ asset('nostra.css') }}">
         <div class="container indexcli">
             <h1 style="color:#FFF"> - Área Administrativa</h1>
+            <h2 style="color: #FFF"><a class="btn btn-primary" href="{{ route('cliente.create') }}">Cadastrar cliente</a></h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -79,17 +80,22 @@
                     @endphp
 
                     @foreach ($clientes as $cliente)
+                    @if ($cliente->deleted_at <> null)
+                       <td colspan="6" style="text-align: center">
+                            Cliente deletado
+                       </td>
+                        @else
                         <tr>
                             <td>
                                 <a class="btn btn-warning"
-                                    href="{{ route('cliente.edit', ['id' => $cliente->id_cliente]) }}">Editar</a>
+                                    href="{{ route('cliente.edit', ['id_cliente' => $cliente->id_cliente]) }}">Editar</a>
                                 <a class="btn btn-success"
-                                    href="{{ route('cliente.show', ['id' => $cliente->id_cliente]) }}">Ver</a>
-                                <form action="{{ route('cliente.destroy', ['id' => $cliente->id_cliente]) }}" method="POST">
+                                    href="{{ route('cliente.show', ['id_cliente' => $cliente->id_cliente]) }}">Ver</a>
+                                <form action="{{ route('cliente.destroy', ['id_cliente' => $cliente->id_cliente]) }}" method="POST">
                                     @csrf
                                     @method('Delete')
                                     <button class="btn btn-danger"
-                                        href="{{ route('cliente.destroy', ['id' => $cliente->id_cliente]) }}">Excluir</button>
+                                        href="{{ route('cliente.destroy', ['id_cliente' => $cliente->id_cliente]) }}">Excluir</button>
                                 </form>
                             </td>
 
@@ -101,6 +107,7 @@
 
                         </tr>
                 </tbody>
+                @endif
                 @endforeach
 
                 <div class="paginate">

@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<form action="{{ route('cliente.update', ['id'=>$cliente->id_cliente]) }}" method="post">
+<form action="{{ route('cliente.update', ['id_cliente'=>$cliente->id_cliente]) }}" method="post">
 
 
     @csrf

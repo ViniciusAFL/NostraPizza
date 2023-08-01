@@ -29,7 +29,8 @@
         <p>Endereços do cliente:</p>
 
         @foreach ($clientesEndereco as $cliend )
-        @if ($cliente->id_cliente == $cliend->cliente->id_cliente)
+
+        @if ($cliente->id_cliente == $cliend->cliente->id_cliente && $cliend->cliente->deleted_at == null)
 
             <table class="table">
                 <thead>
@@ -51,7 +52,20 @@
                                 ['id_cliente' => $cliend->cliente->id_cliente,
                                 'id_endereco' => $cliend->endereco->id_endereco] ) }}">
                                 Editar</a>
+
+                                <form action="{{ route('destroyCliend',
+                                ['id_cliente' => $cliend->cliente->id_cliente,
+                                'id_endereco' => $cliend->endereco->id_endereco] ) }}" method="POST">
+                                    @csrf
+                                    @method('Delete')
+                                    <button class="btn btn-danger"
+                                        href="{{ route('destroyCliend',
+                                        ['id_cliente' => $cliend->cliente->id_cliente,
+                                        'id_endereco' => $cliend->endereco->id_endereco] ) }}">Excluir</button>
+                                </form>
+
                             </td>
+
                             <td>{{$cliend->endereco->id_endereco}}</td>
                             <td>{{$cliend->endereco->endereco}}</td>
                             <td>{{$cliend->endereco->numero}}</td>

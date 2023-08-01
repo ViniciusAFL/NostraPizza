@@ -38,23 +38,19 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-
         $cliente = Cliente::create($request->all());
-        return redirect()->route('cliente.index')->with('success');
-
+        return redirect()->route('cliente.show', ['id_cliente' => $cliente->id_cliente])->with('success');
     }
-
-
 
 
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(int $id_cliente)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::find($id_cliente);
         $enderecos = Endereco::all();
-        $clientesEndereco = ClienteEndereco::all();
+        $clientesEndereco = ClienteEndereco::where('id_cliente', $id_cliente)->get();
 
         return view('Cliente.show')->with(compact('cliente', 'enderecos', 'clientesEndereco'));
 
@@ -63,30 +59,30 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(int $id)
+    public function edit(int $id_cliente)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::find($id_cliente);
         return view ('cliente.update')->with(compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id_cliente)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::find($id_cliente);
         $cliente->update($request->all());
 
-         return redirect()->route('cliente.show', ['id'=>$cliente->id_cliente])
+         return redirect()->route('cliente.show', ['id_cliente'=>$cliente->id_cliente])
          ->with('success', 'Atualizado com sucesso');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $id)
+    public function destroy(int $id_cliente)
     {
-        Cliente::find($id)->delete();
+        Cliente::find($id_cliente)->delete();
         return redirect()->back()->with('danger', 'Removido Com sucesso!');
 
     }
@@ -100,7 +96,7 @@ class ClienteController extends Controller
 
     public function createEndereco(Request $request)
     {
-         $cliente = Cliente::find('id_cliente');
+        $cliente = Cliente::find('id_cliente');
         $enderecos = Endereco::class;
         $clientesEndereco = ClienteEndereco::class;
 
@@ -158,19 +154,6 @@ class ClienteController extends Controller
 
     public function updateEndereco(Request $request, int $id_cliente, $id_endereco)
     {
-        // $cliend = ClienteEndereco::where('id_cliente', $id_cliente)
-        //                              ->where('id_endereco', $id_endereco)
-        //                              ->first();
-
-        // $cliend->endereco->endereco = $request->input('endereco');
-        // $cliend->endereco->rua = $request->input('rua');
-        // $cliend->endereco->numero = $request->input('numero');
-        // $cliend->endereco->complemento = $request->input('complemento');
-        // $cliend->endereco->uf = $request->input('uf');
-        // $cliend->endereco->cep = $request->input('cep');
-
-        // $cliend->save();
-
 
         $cliend = ClienteEndereco::where('id_cliente', $id_cliente)
         ->where('id_endereco', $id_endereco)
@@ -183,7 +166,15 @@ class ClienteController extends Controller
          ->with('success', 'Atualizado com Sucesso!');
 
         //return redirect()->back()->with('success', 'atualizado com sucesso');
+    }
 
+    public function destroyCliend(int $id_cliente, $id_endereco)
+    {
+        $cliend = ClienteEndereco::where('id_cliente', $id_cliente)
+        ->where('id_endereco', $id_endereco)
+        ->first();
+        $cliend->delete();
+        return redirect()->back()->with('danger', 'Removido Com sucesso!');
 
     }
 
