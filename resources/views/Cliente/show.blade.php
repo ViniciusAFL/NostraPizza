@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="{{ asset('nostra.css') }}">
 
 <div class="container indexcli" style="color: #FFF">
+    <h1>Detalhes do Cliente E Cadastrar Pedido</h1>
 
     <h2>Cadastrar Um Endereço:</h2>
         <a class="btn btn-warning mb-2" href="{{ route('createEndereco', ['id_cliente' => $cliente->id_cliente]) }}">Cadastrar Endereço</a>
 
-    <h1>Detalhes do Cliente</h1>
 
     <p>Nome: {{ $cliente->nome }}</p>
     <p>Email: {{ $cliente->email }}</p>
@@ -23,8 +23,6 @@
         @foreach ($enderecos as $endereco)
             <input type="hidden" name="id_endereco">
         @endforeach
-
-
 
         <p>Endereços do cliente:</p>
 
@@ -64,6 +62,11 @@
                                         'id_endereco' => $cliend->endereco->id_endereco] ) }}">Excluir</button>
                                 </form>
 
+                                <a class="btn btn-primary" href="{{ route('pedido.create',
+                                ['id_cliente' =>$cliente->id_cliente,
+                                'id_cliente_endereco' =>$cliend->id_cliente_endereco]) }}">Criar pedido</a>
+
+
                             </td>
 
                             <td>{{$cliend->endereco->id_endereco}}</td>
@@ -76,6 +79,7 @@
 
                         </tr>
                 </tbody>
+
                 @endif
 
                 @endforeach
