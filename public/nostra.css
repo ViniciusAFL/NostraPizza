@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
 
 
-*{
+* {
     margin: 0px;
     padding: 0px;
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     background-image: url("/imagem/imgfundo.png");
     background-size: cover;
     font-family: 'Poppins', sans-serif;
@@ -15,175 +15,174 @@ body{
 
 }
 
-.container{
+.container {
     margin-top: 150px;
     font-family: 'Josefin Sans', sans-serif;
 }
 
-#nome-do-menu{
+#nome-do-menu {
     color: #ffcdbc;
 
 }
 
-.icons-redes{
+.icons-redes {
     color: #ffcdbc;
     margin-top: -30px;
 }
 
-.icons-redes:hover{
+.icons-redes:hover {
     color: #c59d8f;
 }
 
-#img-logo
-{
+#img-logo {
     margin-top: 50px;
 }
 
-#frase{
+#frase {
     margin-top: 30px;
     font-family: 'Pacifico', cursive;
     color: white;
 }
 
-#color-menu{
+#color-menu {
     background-color: #130303;
     margin-top: -90px;
 }
 
-.nome-pizzaria{
-    font-family:'Times New Roman', Times, serif
-
+.nome-pizzaria {
+    font-family: 'Times New Roman', Times, serif
 }
 
-.ifood-logo{
+.ifood-logo {
     margin-top: -70px;
 }
 
-#background-nav{
+#background-nav {
     background-color: #2d080a;
 }
 
-#btn-color{
-   background-color: #2d080a;
-   font-family: 'IBM Plex Sans', sans-serif;
+#btn-color {
+    background-color: #2d080a;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.icon-home{
+.icon-home {
     margin-top: -3px;
 }
 
-#btn-color:hover{
+#btn-color:hover {
     background-color: #4d0d11;
 }
 
-.btn-color{
+.btn-color {
     background-color: #2d080a;
 
 
 }
-.btn-color:hover{
+
+.btn-color:hover {
     background-color: #f5853f;
 }
 
-.nav-link{
+.nav-link {
     color: #ffcdbc;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: #ffcdbc;
 }
 
-.background-nav{
+.background-nav {
     background-color: #2d080a;
- }
+}
 
- .backgroud-col-dropdown{
+.backgroud-col-dropdown {
     border-radius: 3px;
     background-color: #2d080a;
- }
+}
 
- #dropdownMenuButton1{
+#dropdownMenuButton1 {
     background-color: #220709;
     border: none;
- }
+}
 
- #dropdownMenuButton1:hover{
+#dropdownMenuButton1:hover {
     background-color: #4d0d11;
- }
+}
 
- #dropdownMenuButton1 h6{
+#dropdownMenuButton1 h6 {
     font-size: 13px;
     color: #ffcdbc;
 
- }
+}
 
- .dropdown-menu{
+.dropdown-menu {
     background-color: #220709;
- }
+}
 
- .dropdown-item{
+.dropdown-item {
     background-color: #30090c;
- }
+}
 
- .dropdown-item{
+.dropdown-item {
     color: #c59d8f;
     background-color: #2d080a;
-    font-family:'Times New Roman', Times, serif
- }
+    font-family: 'Times New Roman', Times, serif
+}
 
- .dropdown-item:hover{
+.dropdown-item:hover {
     color: #ffcdbc;
     background-color: #4d0d11;
- }
+}
 
- .btn-sair{
+.btn-sair {
     color: #ffcdbc;
     background-color: #220709;
-    font-family:'Times New Roman', Times, serif
- }
+    font-family: 'Times New Roman', Times, serif
+}
 
- .btn-sair:hover{
+.btn-sair:hover {
     color: #ffcdbc;
     background-color: #4d0d11;
- }
+}
 
- .conteudo-index{
+.conteudo-index {
     background-color: #130303;
     height: 700px;
 
 
- }
+}
 
- .bg-sobrenos{
+.bg-sobrenos {
     background-color: #30090c;
     border-radius: 5px;
     color: #ffcdbc;
-    font-family:'Times New Roman', Times, serif
- }
+    font-family: 'Times New Roman', Times, serif
+}
 
- .bg-sobre-pizzaria{
+.bg-sobre-pizzaria {
     background-color: #270809;
     border-radius: 5px;
     padding: 5px;
     margin-top: -5px;
 }
 
-#color-icons{
+#color-icons {
     color: #ffcdbc;
 }
 
-.ifood{
+.ifood {
     color: #ff2800;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.bg-rodape{
+.bg-rodape {
     background-color: #2d080a;
     font-family: 'Times New Roman', Times, serif;
 
 }
 
-#rodape{
+#rodape {
     text-decoration: none;
     font-size: 20px;
     cursor: pointer;
@@ -197,11 +196,11 @@ body{
     color: #c59d8f;
 }
 
-.color-letter-rodape{
+.color-letter-rodape {
     color: #ffcdbc;
 }
 
-.ano-pizza{
+.ano-pizza {
     color: #ffcdbc;
 }
 
@@ -219,215 +218,217 @@ body{
     cursor: pointer;
     padding: 15px;
     border-radius: 4px;
-  }
+}
 
-  #myBtn:hover {
+#myBtn:hover {
     background-color: #4d0d11;
-  }
+}
 
-  .form-contato{
+.form-contato {
     margin-top: -150px;
-  }
+}
 
-  .container-contato{
+.container-contato {
     background-color: #130303;
     margin-top: -200px;
-  }
+}
 
-  .label-contato{
+.label-contato {
     color: #ffcdbc;
-  }
+}
 
-  .input-contato{
+.input-contato {
     background-color: #4d0d11;
     border: none;
-  }
+}
 
-  .input-contato:focus{
+.input-contato:focus {
     background-color: #6d282d;
-  }
+}
 
-  .input-contato::placeholder:focus{
+.input-contato::placeholder:focus {
     color: #c59d8f;
-  }
+}
 
-  .input-contato::placeholder{
+.input-contato::placeholder {
     color: #d1d1d1;
-  }
+}
 
-  .input-contato:focus[type="text"], textarea {
-    color : #d1d1d1;
-  }
+.input-contato:focus[type="text"],
+textarea {
+    color: #d1d1d1;
+}
 
-  #btn-contato{
+#btn-contato {
     background-color: #2d080a;
     border: none;
-  }
+}
 
-  #btn-contato:hover{
+#btn-contato:hover {
     background-color: #220507;
-  }
+}
 
-  .fale-conosco-nome{
+.fale-conosco-nome {
     margin-top: -80px;
     color: #d1d1d1;
-  }
+}
 
-  .imagem-contato{
+.imagem-contato {
     margin-top: -250px;
     margin-bottom: 50px;
-  }
+}
 
-  .bg-cardapio{
+.bg-cardapio {
     margin-top: -150px;
-  }
+}
 
-  .bg-container-cardapio{
+.bg-container-cardapio {
     background-color: #130303
-  }
+}
 
-  .cardapio-name{
+.cardapio-name {
     color: #d1d1d1;
-  }
+}
 
-  .input-pesquisar{
+.input-pesquisar {
     border-radius: 5px;
-  }
+}
 
-  .input-pesquisar::placeholder{
+.input-pesquisar::placeholder {
     font-size: 13px;
-  }
+}
 
 
-  .button-pesquisar{
+.button-pesquisar {
     border-radius: 5px;
     border: none;
-    background-color: #220709;
+    background-color: #69171c;
     color: #ffcdbc;
     font-size: 15px;
 
-  }
+}
 
-  .button-pesquisar:hover{
+.button-pesquisar:hover {
     color: #d4ada0;
-  }
+}
 
-  .bi-search{
+.bi-search {
     color: #d1d1d1;
-  }
+}
 
-  #btn-comprar-ver{
+#btn-comprar-ver {
     background-color: #f5853f;
     color: #220709;
-  }
+}
 
-  #btn-comprar-ver:hover{
+#btn-comprar-ver:hover {
     background-color: #a85827;
-  }
+}
 
-  .card-cardapio{
+.card-cardapio {
     background-color: #220b0c;
     color: #d4ada0;
-  }
-  .indexcli{
-    padding-top: 1px;
-  }
+}
 
-  .input-create-user{
+.indexcli {
+    padding-top: 1px;
+}
+
+.input-create-user {
     border-radius: 5px;
     background-color: #4d0d11;
     color: #ffcdbc;
     border: none;
-  }
+}
 
-  .input-create-user::placeholder{
+.input-create-user::placeholder {
     color: #ffcdbc;
     font-size: 14px;
-  }
+}
 
-  .bg-create-user{
+.bg-create-user {
     background-color: #130303;
 
-  }
+}
 
-  .color-cargos{
+.color-cargos {
     color: #ffcdbc;
-  }
+}
 
-  .btn-create-user{
+.btn-create-user {
     border-radius: 5px;
     background-color: #69171c;
     border: none;
     color: #d1d1d1;
     padding: 5px;
     margin-left: 3px;
-  }
+}
 
-  .btn-create-user:hover{
+.btn-create-user:hover {
     background-color: #6d282d;
-  }
+}
 
-  .funcionarios-color{
+.funcionarios-color {
     color: #d1d1d1;
-  }
+}
 
-  .btn-create-gerentes{
+.btn-create-gerentes {
     background-color: #f5853f;
     border: none;
     border-radius: 5px;
     padding: 5px;
     color: #270809;
-  }
+}
 
-  .btn-create-gerentes:hover{
+.btn-create-gerentes:hover {
     background-color: #914d23;
-  }
+}
 
-  .cont-cliente{
+.cont-cliente {
     margin-top: -150px;
-  }
+}
 
-  .bg-cont-cliente{
+.bg-cont-cliente {
     background-color: #130303;
-  }
+}
 
-  .btn-clientes{
+.btn-clientes {
     background-color: #f5853f;
     color: #270809;
     padding: 5px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 18px;
-  }
+}
 
-  .btn-clientes:hover{
+.btn-clientes:hover {
     background-color: #a85827;
-  }
+}
 
-  .cont-cliente-edit{
+.cont-cliente-edit {
     margin-top: 8px;
     background-color: #130303;
-  }
+}
 
-  .cont-clientes-edit-1{
+.cont-clientes-edit-1 {
     margin-top: -15px;
-  }
+}
 
-  .label-cliente-edit{
+.label-cliente-edit {
     color: #ffcdbc;
-  }
+}
 
-  .input-clientes-edit{
+.input-clientes-edit {
     background-color: #f5853f;
     border: none;
     border-radius: 5px;
-  }
+}
 
-  .input-clientes-edit:hover{
+.input-clientes-edit:hover {
     background-color: #a85827;
-  }
+}
 
-  .input-form-clientes{
+.input-form-clientes {
     background-color: #69171c;
     border-radius: 5px;
     background-color: #69171c;
@@ -435,32 +436,76 @@ body{
     color: #d1d1d1;
     padding: 5px;
     margin-left: 3px;
-  }
+}
+
+.input-form-clientes:focus {
+    background-color: #69171c;
+}
+
+.input-form-clientes::placeholder {
+    color: #d1d1d1;
+}
+
+.input-form-clientes::placeholder:focus-within {
+    color: #d1d1d1;
+}
+
+.container-cadastrar-end {
+    margin-top: -150px;
+}
+
+.container-cadastrar-end-2 {
+    background-color: #130303;
+}
+
+.label-cadastrar-end {
+    color: #ffcdbc;
+}
+
+.cont-pedidos{
+    margin-top: -3px;
+}
+
+.cont-pedidos-2{
+    background-color: #130303;
+    margin-top: 0.5px;
+}
+
+.cont-show-cliente{
+    margin-top: -150px;
+}
+
+.col-clientes-show{
+    background-color: #2d080a;
+    color: #ffcdbc;
+}
+
+.bg-show-cliente{
+    background-color: #130303;
+}
+
+.cont-produto{
+    background-color: #130303;
+    margin-top: -150px;
+}
 
 
-
-
-@media screen and (max-width: 700px ) and (max-width: 900px)  {
-    .bg-sobre-pizzaria{
+@media screen and (max-width: 700px) and (max-width: 900px) {
+    .bg-sobre-pizzaria {
 
         font-size: larger;
     }
 
-    .bg-sobre-pizzaria{
+    .bg-sobre-pizzaria {
         font-size: 15px;
     }
 
-    h1{
+    h1 {
         font-size: 16px;
     }
 
-    .conteudo-index{
+    .conteudo-index {
         height: auto;
     }
 
 }
-
-
-
-
-
