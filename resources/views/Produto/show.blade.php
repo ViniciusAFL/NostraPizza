@@ -8,7 +8,7 @@
         <h2> Tipo: {{ $produto->tipo->tipo }} </h2>
         @if ($produto->foto)
             <p>
-                <img src="{{ url('storage/fotos' . $produto->foto) }}" lass="img-thumbnail" width="450">
+                <img src="{{ url('storage/fotos/' . $produto->foto) }}" lass="img-thumbnail" width="450">
             </p>
 
         @endif

@@ -25,7 +25,7 @@ class CargoController extends Controller
     public function index()
     {
 
-        $cargos = DB::select('select * from users where id_cargo = 3');
+        $cargos = User::where('id_cargo',3);
 
 
 

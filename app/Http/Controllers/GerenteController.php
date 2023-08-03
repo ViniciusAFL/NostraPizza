@@ -25,9 +25,8 @@ class GerenteController extends Controller
     public function index()
     {
 
-        $gerentes = DB::select('select * from users where id_cargo = 2');
-
-
+        // $gerentes = DB::select('select * from users where id_cargo = 2 and deleted_at = null');
+        $gerentes = User::where('id_cargo',2);
 
         return view('gerente.index')
             ->with(compact('gerentes'));
@@ -99,9 +98,9 @@ class GerenteController extends Controller
      */
     public function destroy(int $id)
     {
-        Cargo::find($id)->delete();
+        User::find($id)->delete();
         return redirect()
             ->back()
-            ->with('destroy','Excluído com sucesso!');
+            ->with('excluir','Excluído com sucesso!');
     }
 }

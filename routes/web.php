@@ -141,6 +141,12 @@ Route::prefix('pedidos')
         Route::post('/store', 'store')->name('pedido.store');
         Route::post('/update/{id_pedido}', 'update')->name('pedido.update');
         Route::delete('/destroy/{id_pedido}', 'destroy')->name('pedido.destroy');
+
+        //Pedidos Produtos
+        Route::get('/adicionar/{id_pedido}', 'adicionar')->name('adicionar');
+        Route::post('/StorePedProd', 'StorePedProd')->name('StorePedProd');
+
+
     });
 
 /**
@@ -250,7 +256,7 @@ Route::prefix('User')
         Route::post('/store', 'store', [UserController::class, 'store'])->name('user.store');
         Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
         Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
-        Route::delete('/excluir', 'excluir')->name('user.excluir');
+        Route::post('/users/excluir/', 'excluir')->name('user.excluir');
     });
 
 //Gerente
@@ -265,7 +271,7 @@ Route::prefix('gerentes')
 
         Route::post('/store', 'store')->name('gerente.store');
         Route::post('/update', 'update')->name('gerente.update');
-        Route::post('/destroy/{id}', 'destroy')->name('gerente.destroy');
+        Route::delete('/destroy/{id}','destroy')->name('gerente.destroy');
     });
 
 require __DIR__ . '/auth.php';

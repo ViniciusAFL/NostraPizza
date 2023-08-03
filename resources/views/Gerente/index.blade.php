@@ -21,16 +21,24 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($gerentes as $gerente)
+            @foreach($gerentes->get() as $gerente)
             <tr>
                 <td>
                     <a class="btn btn-primary" href="{{ route('user.edit', ['id'=>$gerente->id]) }}">
                         <i class="fa-solid fa-pen-to-square"></i>
+
+
+
+{{--
+                        onclick=" return confirm('tem certeza que deseja excluir?')" --}}
                     </a>
 
-                    <a class="btn btn-danger" href="{{ route('user.excluir', ['id'=>$gerente->id_cargo]) }}">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </a>
+                    <form action="{{ route('gerente.destroy',['id'=>$gerente->id])}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class=" btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+
                 </td>
                 <td>
                     {{ $gerente->id_cargo}}

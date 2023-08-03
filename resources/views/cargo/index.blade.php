@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($cargos as $cargo)
+            @foreach($cargos->get() as $cargo)
             <tr>
                 <td>
                     <a class="btn btn-primary" href="{{ route('user.edit', ['id'=>$cargo->id_cargo]) }}">
@@ -28,9 +28,11 @@
                     {{-- <a class="btn btn-success" href="{{ route('cargo.show', ['id'=>$cargo->id_cargo]) }}">
                         <i class="fa-solid fa-eye"></i>
                     </a> --}}
-                    <a class="btn btn-danger" href="{{ route('cargo.destroy', ['id'=>$cargo->id_cargo]) }}">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </a>
+                        <form action="{{ route('gerente.destroy',['id'=>$cargo->id])}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class=" btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
                 </td>
                 <td>
                     {{ $cargo->id_cargo}}

@@ -4,8 +4,6 @@
 
 <h1>Cadastrar pedido</h1>
 
- {{-- @dd(Auth()->user()->id) --}}
-
 <form action="{{ route('pedido.store') }}" method="post">
     @csrf
     <input type="hidden" name="id_cliente" value="{{$cliente = ($_GET['id_cliente'])}}">

@@ -8,6 +8,9 @@
 
 <div class="container">
     <h1>Pedido:</h1>
+
+    <a class="btn btn-dark mb-2" href="{{ route('adicionar', ['id_pedido'=>$pedidos->id_pedido]) }}">Adicionar itens ao pedido</a>
+
     <table class="table">
             <thead>
                 <tr>

@@ -65,7 +65,7 @@
                                 {{ $produto->nome }}
                                 @if ($produto->foto)
                                     <br>
-                                    <img src="{{ url('storage/fotos' . $produto->foto) }}" lass="img-thumbnail"
+                                    <img src="{{ url('storage/fotos/' . $produto->foto) }}" lass="img-thumbnail"
                                         width="250">
                                 @endif
                             </td>
