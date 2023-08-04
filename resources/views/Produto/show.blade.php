@@ -1,66 +1,71 @@
 @extends('layouts.base')
+
 @section('conteudo')
-    {{-- menu --}}
-    @include('produto.partials.menu')    {{-- /menu --}}
+    @include('layouts.menu')
+    <link rel="stylesheet" href="{{ asset('nostra.css') }}">
 
+    <div class="container">
 
-        <h1> Produto:{{ $produto->nome }} </h1>
-        <h2> Tipo: {{ $produto->tipo->tipo }} </h2>
-        @if ($produto->foto)
-            <p>
-                <img src="{{ url('storage/fotos/' . $produto->foto) }}" lass="img-thumbnail" width="450">
-            </p>
+        <div class="container cont-adicionar-prod">
+            <h1 class=" text-center p-3"> Produto:{{ $produto->nome }} </h1>
+            <h2> Tipo: {{ $produto->tipo->tipo }} </h2>
+            @if ($produto->foto)
+                <p>
+                    <img src="{{ url('storage/fotos/' . $produto->foto) }}" lass="img-thumbnail" width="450">
+                </p>
+            @endif
+            <p> Descrição: {!! nl2br($produto->descricao) !!}</p>
+            @if ($produto->observacoes)
+                <p class="alert alert-info">
+                    {!! nl2br($produto->observacoes) !!}
+                </p>
+            @endif
 
-        @endif
-        <p> Descrição: {!! nl2br($produto->descricao) !!}</p>
-        @if ($produto->observacoes)
-            <p class="alert alert-info">
-                {!! nl2br($produto->observacoes) !!}
-            </p>
-        @endif
-
-    <h6>
-        <a class="btn btn-success" href="{{ route('produto.createTamanho', ['id_produto' => $produto->id_produto]) }}">
-            Adicionar Novo Tamanho
-        </a>
-    </h6>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th class="col-2">Ações</th>
-                <th>Tamanho</th>
-                <th>Preço</th>
-                <th>Obs.:</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse ($produto->tamanhos()->get() as $item)
-                <tr>
-                    <td>
-                        {{-- editar --}}
-                        <a class="btn btn-primary" href="#">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                    </td>
-                    <td>
-                        {!! $item->tamanho->tamanho !!}
-                    </td>
-                    <td>
-                        {{ $item->preco }}
-                    </td>
-                    <td>
-                        {!! nl2br($item->observacoes) !!}
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="4">
-                        Nenhum tamanho definido para esse produto
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
+            <h6>
+                <a class="btn btn-clientes"
+                    href="{{ route('produto.createTamanho', ['id_produto' => $produto->id_produto]) }}">
+                    Adicionar Novo Tamanho
+                </a>
+            </h6>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-2">Ações</th>
+                        <th>Tamanho</th>
+                        <th>Preço</th>
+                        <th>Obs.:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($produto->tamanhos()->get() as $item)
+                        <tr>
+                            <td>
+                                {{-- editar --}}
+                                <a class="btn btn-primary" href="#">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                            <td>
+                                {!! $item->tamanho->tamanho !!}
+                            </td>
+                            <td>
+                                {{ $item->preco }}
+                            </td>
+                            <td>
+                                {!! nl2br($item->observacoes) !!}
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4">
+                                Nenhum tamanho definido para esse produto
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
 @endsection
 @section('scripts')
 @endsection

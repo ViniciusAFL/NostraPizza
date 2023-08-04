@@ -489,6 +489,18 @@ textarea {
     margin-top: -150px;
 }
 
+.cont-adicionar-prod{
+    background-color: #130303;
+    margin-top: -150px;
+    color: #ffcdbc;
+}
+
+.cont-prod-tamanho{
+    background-color: #130303;
+    margin-top: -150px;
+    color: #ffcdbc;
+}
+
 
 @media screen and (max-width: 700px) and (max-width: 900px) {
     .bg-sobre-pizzaria {

@@ -2,7 +2,7 @@
 
 @section('conteudo')
     @include('layouts.menu')
-        <link rel="stylesheet" href="{{ asset('nostra.css') }}">
+    <link rel="stylesheet" href="{{ asset('nostra.css') }}">
 
     <body>
 
@@ -16,10 +16,11 @@
                     </div>
                     <div class="col-xs-5 d-flex justify-content-end">
                         <form class="mt-3 me-3" action="{{ route('pesquisa.filtrar') }}" method="GET">
-                            <input class="input-contato input-pesquisar" style="height: 40px" type="text" name="termo_pesquisa"
-                                placeholder="Digite sua pesquisa">
+                            <input class="input-contato input-pesquisar" style="height: 40px" type="text"
+                                name="termo_pesquisa" placeholder="Digite sua pesquisa">
                             <!-- Outros campos de filtro, se necessário -->
-                            <button class="button-pesquisar btn" style="height: 40px" type="submit"><i class="bi bi-search"></i></button>
+                            <button class="button-pesquisar btn" style="height: 40px" type="submit"><i
+                                    class="bi bi-search"></i></button>
                         </form>
 
                     </div>
@@ -28,20 +29,21 @@
 
                     @foreach ($produtos as $produto)
                         <div class="col-12 col-xs-3 mt-5 ">
-                            <div class="card m-auto card-cardapio text-center" style="width: 250px; height: 250px; margin:10px; padding: 10px;">
-                                <img src="..." class="card-img-top" alt="...">
+                            <div class="card m-auto card-cardapio text-center"
+                                style="width: 250px; height: 250px; margin:10px; padding: 10px;">
+                                <img class="m-auto" src="{{ url('storage/fotos/' . $produto->foto) }}" lass="img-thumbnail"
+                                width="130">
                                 <div class="card-body">
                                     <h5 class="card-title"> <?php echo $produto->nome; ?></h5>
                                     <p class="card-text" style="font-size: 15px; ">
                                     </p>
-                                    <a href="{{ route('produto.show', ['id' => $produto->id_produto]) }}"
-                                        class="btn " id="btn-comprar-ver">Ver</a>
+                                    <a href="{{ route('produto.show', ['id' => $produto->id_produto]) }}" class="btn "
+                                        id="btn-comprar-ver">Ver</a>
 
                                     <a href="#" class="btn " id="btn-comprar-ver">Comprar</a>
                                 </div>
                             </div>
                         </div>
-
                     @endforeach
 
                 </div>
@@ -50,7 +52,8 @@
             @include('layouts.rodape')
         </div>
 
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/imagem/logo.png" style="height: 40px" alt=""></button>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="/imagem/logo.png" style="height: 40px"
+                alt=""></button>
 
 
         <script>
