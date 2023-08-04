@@ -146,6 +146,8 @@ Route::prefix('pedidos')
         Route::get('/adicionar/{id_pedido}', 'adicionar')->name('adicionar');
         Route::post('/StorePedProd', 'StorePedProd')->name('StorePedProd');
 
+        Route::get('/buscar', 'buscar')->name('buscar');
+
 
     });
 

@@ -13,9 +13,11 @@ use App\Models\{
     PedidoProduto,
     Produto,
     ProdutoTamanho,
+
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PedidoController extends Controller
 {
@@ -66,7 +68,6 @@ class PedidoController extends Controller
         $pedidos = Pedido::Find($id_pedido);
         return view('pedidos.pedidoshow')->with(compact('pedidos'));
 
-
     }
 
     /**
@@ -109,7 +110,6 @@ class PedidoController extends Controller
 
     public function Adicionar(int $id_pedido)
     {
-
         $produtos = Produto::all();
         $tamanhos = ProdutoTamanho::all();
         $pedidoprod  = PedidoProduto::with([
@@ -120,17 +120,33 @@ class PedidoController extends Controller
             ])
             ->where('id_pedido', $id_pedido);
 
+            session(['id_pedido' => $id_pedido]);
+
 
         return view('pedidos.Adicionar')->with(compact('pedidoprod','produtos', 'tamanhos'));
-
     }
 
     public function StorePedProd(Request $request)
     {
-        $id_user = $request->input('id_user');
-        $id_pedido = $request->input('id_pedido');
-        $pedidoprod = PedidoProduto::create($request->all());
-        return redirect()->route('pedido.show', ['id_pedido' => $pedido->id_pedido])->with('success');
+        $id_pedido = session('id_pedido');
+        $preco = $request->input('preco');
+        $qtd = $request->input('qtd');
+        $idProdutoTamanho = $request->input('id_produto_tamanho');
+        $subtotal = $preco * $qtd;
+
+        $pedidoprod = PedidoProduto::create([
+        'id_user' => Auth::user()->id,
+        'id_pedido' => $id_pedido,
+        'id_produto_tamanho' => $idProdutoTamanho,
+        'preco' => $subtotal,
+        'qtd' => $request->input('qtd'),
+        'subtotal' => $subtotal,
+        ]);
+        return redirect()->back()->with('danger', 'Removido Com sucesso!');
+    }
+
+    public function Deleteitem()
+    {
 
     }
 
