@@ -13,7 +13,7 @@ use App\Models\{
     PedidoProduto,
     Produto,
     ProdutoTamanho,
-
+    tamanho,
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -111,6 +111,7 @@ class PedidoController extends Controller
     public function Adicionar(int $id_pedido)
     {
         $produtos = Produto::all();
+        $pedidos = Pedido::find($id_pedido);
         $tamanhos = ProdutoTamanho::all();
         $pedidoprod  = PedidoProduto::with([
             'produto',
@@ -119,11 +120,8 @@ class PedidoController extends Controller
             'pedido'
             ])
             ->where('id_pedido', $id_pedido);
-
             session(['id_pedido' => $id_pedido]);
-
-
-        return view('pedidos.Adicionar')->with(compact('pedidoprod','produtos', 'tamanhos'));
+         return view('pedidos.Adicionar')->with(compact('pedidoprod','produtos', 'tamanhos', 'pedidos'));
     }
 
     public function StorePedProd(Request $request)
@@ -138,16 +136,74 @@ class PedidoController extends Controller
         'id_user' => Auth::user()->id,
         'id_pedido' => $id_pedido,
         'id_produto_tamanho' => $idProdutoTamanho,
-        'preco' => $subtotal,
+        'preco' => $preco,
         'qtd' => $request->input('qtd'),
         'subtotal' => $subtotal,
         ]);
-        return redirect()->back()->with('danger', 'Removido Com sucesso!');
+
+        $this->Finalizar($id_pedido);
+        $this->updateTotalPedido();
+
+        return redirect()->back()->with('success', 'Produto Adicionado!');
+
     }
+
+
+
+    public function Finalizar(int $id_pedido)
+    {
+        $id_pedido = session('id_pedido');
+
+        $itensPedido = PedidoProduto::where('id_pedido', $id_pedido)->get();
+
+        $totalPedido = 0;
+        foreach ($itensPedido as $item) {
+            if (!$item->trashed()) {
+                $subtotal = $item->preco * $item->qtd;
+                $totalPedido += $subtotal;
+            }
+
+        }
+
+        $pedido = Pedido::find($id_pedido);
+        $pedido->total = $totalPedido;
+        $pedido->save();
+    }
+
 
     public function Deleteitem()
     {
 
+        $id_pedido = session('id_pedido');
+        $pedidos = Pedido::class;
+
+        $pedidoprod = PedidoProduto::where('id_pedido', $id_pedido)->first();
+
+        $pedidoprod->delete();
+
+        $this->updateTotalPedido();
+
+        return redirect()->back()->with('danger', 'Removido com sucesso!');
+
     }
+
+
+    public function updateTotalPedido()
+    {
+    $id_pedido = session('id_pedido');
+
+    $itensPedido = PedidoProduto::where('id_pedido', $id_pedido)->get();
+
+    $totalPedido = 0;
+    foreach ($itensPedido as $item) {
+        $subtotal = $item->preco * $item->qtd;
+        $totalPedido += $subtotal;
+    }
+
+    $pedido = Pedido::find($id_pedido);
+    $pedido->total = $totalPedido;
+    $pedido->save();
+    }
+
 
 }

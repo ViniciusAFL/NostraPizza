@@ -14,7 +14,7 @@ class tamanho extends Model
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     // campos que podem ser visualizados/ manipulados fora da classe
     protected $fillable = [
-        'tamanhos'
+        'tamanho'
 
     ];
 }

@@ -39,11 +39,11 @@ class Produto extends Model
                                 'id_tipo_produto');
     }
 
-    public function tamanhos(): object
-    {
-        return $this->belongsTo(ProdutoTamanho::class,
-        'id_produto',
-        'id_produto');
-
+    public function tamanhos(): object {
+        return $this->belongsTo(
+            ProdutoTamanho::class,
+            'id_produto',
+            'id_produto'
+        );
     }
 }
