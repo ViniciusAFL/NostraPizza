@@ -40,7 +40,10 @@
                     </div>
                 </div>
 
-                <button type="submit" class="mt-3 btn btn-block btn-success ms-2" id="btn-contato">Send Email</button>
+                {{-- <a href="#" >Clique aqui</a> --}}
+
+                <button onclick="swal('Enviado com successo!');" type="submit" class="mt-3 btn btn-block btn-success ms-2" id="btn-contato">Send Email</button>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             </form>
 
             <div class="row d-flex justify-content-end">
