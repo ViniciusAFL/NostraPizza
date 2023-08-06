@@ -37,7 +37,7 @@
                                     <h5 class="card-title"> <?php echo $produto->nome; ?></h5>
                                     <p class="card-text" style="font-size: 15px; ">
                                     </p>
-                                    <a href="{{ route('produto.show', ['id' => $produto->id_produto]) }}" class="btn "
+                                    <a href="{{ route('ProdutoCliente.show', ['id' => $produto->id_produto]) }}" class="btn "
                                         id="btn-comprar-ver">Ver</a>
 
                                     <a href="#" class="btn " id="btn-comprar-ver">Comprar</a>

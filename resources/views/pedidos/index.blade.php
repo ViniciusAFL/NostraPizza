@@ -32,7 +32,8 @@
                                     method="post">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-clientes mt-1" type="submit" style="width: 70px"
+                                    <button onclick=" return confirm('tem certeza que deseja excluir?')"
+                                    class="btn btn-clientes mt-1" type="submit" style="width: 70px"
                                         href="{{ route('pedido.destroy', ['id_pedido' => $pedido->id_pedido]) }}">Excluir</button>
                                 </form>
                             </td>

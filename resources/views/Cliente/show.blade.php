@@ -40,6 +40,7 @@
                             <tr>
                                 <th>Ações</th>
                                 <th>ID_ENDEREÇO</th>
+                                <th>CLIENTE_ENDERECO</th>
                                 <th>ENDEREÇO</th>
                                 <th>NUMERO</th>
                                 <th>BAIRRO</th>
@@ -67,6 +68,7 @@
                                         @csrf
                                         @method('Delete')
                                         <button class="btn btn-clientes mt-1" style="width: 80px"
+                                        onclick=" return confirm('tem certeza que deseja excluir?')"
                                             href="{{ route('destroyCliend', [
                                                 'id_cliente' => $cliend->cliente->id_cliente,
                                                 'id_endereco' => $cliend->endereco->id_endereco,
@@ -84,6 +86,7 @@
                                 </td>
 
                                 <td>{{ $cliend->endereco->id_endereco }}</td>
+                                <td>{{ $cliend->id_cliente_endereco }}</td>
                                 <td>{{ $cliend->endereco->endereco }}</td>
                                 <td>{{ $cliend->endereco->numero }}</td>
                                 <td>{{ $cliend->endereco->bairro }}</td>

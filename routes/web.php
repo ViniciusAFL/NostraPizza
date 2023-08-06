@@ -62,7 +62,7 @@ Route::middleware('auth')->group(function () {
  * | Cargos
  * -----------------------------------
  */
-Route::prefix('cargos')
+Route::prefix('cargos')->middleware('auth')
     ->controller(CargoController::class)
     ->group(function () {
         Route::get('/', 'index')->name('cargo.index');
@@ -81,7 +81,7 @@ Route::prefix('cargos')
  * | Cliente
  * -----------------------------------
  */
-Route::prefix('clientes')
+Route::prefix('clientes')->middleware('auth')
     ->controller(ClienteController::class)
     ->group(function () {
 
@@ -112,7 +112,7 @@ Route::prefix('clientes')
  * | Endereco
  * -----------------------------------
  */
-Route::prefix('enderecos')
+Route::prefix('enderecos')->middleware('auth')
     ->controller(EnderecoController::class)
     ->group(function () {
         Route::get('/', 'index')->name('endereco.index');
@@ -130,7 +130,7 @@ Route::prefix('enderecos')
  * | Pedidos
  * -----------------------------------
  */
-Route::prefix('pedidos')
+Route::prefix('pedidos')->middleware('auth')
     ->controller(PedidoController::class)
     ->group(function () {
         Route::get('/', 'index')->name('pedido.index');
@@ -155,7 +155,7 @@ Route::prefix('pedidos')
  * | Produto
  * -----------------------------------
  */
-Route::prefix('produtos')
+Route::prefix('produtos')->middleware('auth')
     ->controller(ProdutoController::class)
     ->group(function () {
         Route::get('/', 'index')
@@ -194,7 +194,7 @@ Route::prefix('produtos')
  * | Tamanhos
  * -----------------------------------
  */
-Route::prefix('tamanhos')
+Route::prefix('tamanhos')->middleware('auth')
     ->controller(ProdutoTamanhoController::class)
     ->group(function () {
         Route::get('/', 'index')->name('tamanho.index');
@@ -222,18 +222,6 @@ Route::prefix('ProdutoCliente')
     });
 
 
-/**
- * -----------------------------------
- * | Promoções
- * -----------------------------------
- */
-Route::prefix('Promocao')
-    ->controller(PrecoPromocao::class)
-    ->group(function () {
-        Route::get('/', 'index')->name('PromocaoCli.index');
-        Route::get('/{id}', 'show')->name('PromocaoCli.show');
-    });
-
 // CONTATO
 Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
 Route::post('contato-enviar', [ContatoController::class, 'send'])->name('contato.send');
@@ -250,7 +238,7 @@ Route::prefix('pesquisa')
  * | User
  * -----------------------------------
  */
-Route::prefix('User')
+Route::prefix('User')->middleware('auth')
     ->controller(UserController::class)
     ->group(function () {
         Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
@@ -262,7 +250,7 @@ Route::prefix('User')
 
 //Gerente
 
-Route::prefix('gerentes')
+Route::prefix('gerentes')->middleware('auth')
     ->controller(GerenteController::class)
     ->group(function () {
         Route::get('/', 'index')->name('gerente.index');
